@@ -1,0 +1,34 @@
+/*
+ * Contacto.h
+ *
+ *  Created on: 13 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef CONTACTO_H_
+#define CONTACTO_H_
+
+#include <string>
+
+namespace Dentista {
+
+	class Contacto {
+	private:
+		string _nombre;
+		string _dni;
+		string _apellidos;
+		int _telefono1;
+		int _telefono2;
+
+
+	public:
+
+
+
+	};
+}
+
+
+
+
+#endif /* CONTACTO_H_ */

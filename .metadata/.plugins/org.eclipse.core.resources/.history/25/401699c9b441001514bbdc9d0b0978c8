@@ -1,0 +1,14 @@
+/*
+ * Contacto.h
+ *
+ *  Created on: 13 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "Contacto.h"
+
+using namespace std;
+
+namespace Dentista {
+
+}
