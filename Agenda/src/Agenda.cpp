@@ -9,7 +9,4 @@
 #include "Agenda.h"
 
 using namespace std;
-
-namespace Dentista {
-
-}
+using namespace Dentista;

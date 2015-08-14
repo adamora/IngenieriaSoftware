@@ -33,7 +33,7 @@ namespace Dentista {
 
 	public:
 
-		Contacto(){
+		inline Contacto(){
 			setNombre("");
 			setDNI("");
 			setApellidos("");
@@ -48,83 +48,83 @@ namespace Dentista {
 			//setRedesSociales
 		}
 
-		const string& getNombre() const {
+		inline string getNombre() const {
 			return _nombre;
 		}
 
-		void setNombre(const string& nombre) {
+		inline void setNombre(const string nombre) {
 			this->_nombre=nombre;
 		}
 
-		const string& getApellidos() const {
+		inline string getApellidos() const {
 			return _apellidos;
 		}
 
-		void setApellidos(const string& apellidos) {
+		inline void setApellidos(const string apellidos) {
 			this->_apellidos=apellidos;
 		}
 
-		const string& getDNI() const {
+		inline string getDNI() const {
 			return _dni;
 		}
 
-		void setDNI(const string& dni){
+		inline void setDNI(const string dni){
 			this->_dni=dni;
 		}
 
-		const int getTel1() const {
+		inline int getTel1() const {
 			return _telefono1;
 		}
 
-		const int getTel2() const {
+		inline int getTel2() const {
 			return _telefono2;
 		}
 
-		void setTel1(const int telefono) {
+		inline void setTel1(const int telefono) {
 			this->_telefono1=telefono;
 		}
 
-		void setTel2(const int telefono) {
+		inline void setTel2(const int telefono) {
 			this->_telefono2=telefono;
 		}
 
-		const string& getCorreo1() const {
+		inline string getCorreo1() const {
 			return _correo1;
 		}
 
-		const string& getCorreo2() const {
+		inline string getCorreo2() const {
 			return _correo2;
 		}
 
-		void setCorreo1(const string& correo) {
+		inline void setCorreo1(const string correo) {
 			this->_correo1=correo;
 		}
 
-		void setCorreo2(const string& correo) {
+		inline void setCorreo2(const string correo) {
 			this->_correo2=correo;
 		}
 
-		const string& getAnotaciones() const {
+		inline string getAnotaciones() const {
 			return _anotaciones;
 		}
 
-		void setAnotaciones(const string& anotaciones){
+		inline void setAnotaciones(const string anotaciones){
 			this->_anotaciones=anotaciones;
 		}
 
-		const int getContadorAcceso() const {
+		inline int getContadorAcceso() const {
 			return _contadorAcceso;
 		}
 
-		void setContadorAcceso(const int contador){
+		inline void setContadorAcceso(const int contador){
 			this->_contadorAcceso=contador;
 		}
 
-		const bool getFavorito() const {
+		inline bool getFavorito() const {
 			return _favorito;
 		}
 
-		void setFavorito(const bool favorito){
+		inline void setFavorito(const bool favorito){
 			this->_favorito=favorito;
 		}
 	};
