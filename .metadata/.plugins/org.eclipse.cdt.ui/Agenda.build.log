@@ -1,0 +1,10 @@
+17:04:04 **** Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/Agenda.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
+make: *** [src/Agenda.o] Terminado
+Command canceled
+
+17:04:05 Build Cancelled (took 1s.379ms)
+

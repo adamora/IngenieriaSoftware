@@ -1,0 +1,133 @@
+/*
+ * Contacto.h
+ *
+ *  Created on: 13 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef CONTACTO_H_
+#define CONTACTO_H_
+
+#include <string>
+
+using namespace std;
+using namespace Dentista;
+
+	class Contacto {
+
+	private:
+
+		string _nombre;
+		string _dni;
+		string _apellidos;
+		int _telefono1;
+		int _telefono2;
+		string _correo1;
+		string _correo2;
+		//direcciones
+		string _anotaciones;
+		int _contadorAcceso;
+		bool _favorito;
+		//redesSociales
+
+
+	public:
+
+		inline Contacto(){
+			setNombre("");
+			setDNI("");
+			setApellidos("");
+			setTel1(0);
+			setTel2(0);
+			setCorreo1("");
+			setCorreo2("");
+			//setDirecciones
+			setAnotaciones("");
+			setContadorAcceso(0);
+			setFavorito(false);
+			//setRedesSociales
+		}
+
+		inline string getNombre() const {
+			return _nombre;
+		}
+
+		inline void setNombre(const string nombre) {
+			this->_nombre=nombre;
+		}
+
+		inline string getApellidos() const {
+			return _apellidos;
+		}
+
+		inline void setApellidos(const string apellidos) {
+			this->_apellidos=apellidos;
+		}
+
+		inline string getDNI() const {
+			return _dni;
+		}
+
+		inline void setDNI(const string dni){
+			this->_dni=dni;
+		}
+
+		inline int getTel1() const {
+			return _telefono1;
+		}
+
+		inline int getTel2() const {
+			return _telefono2;
+		}
+
+		inline void setTel1(const int telefono) {
+			this->_telefono1=telefono;
+		}
+
+		inline void setTel2(const int telefono) {
+			this->_telefono2=telefono;
+		}
+
+		inline string getCorreo1() const {
+			return _correo1;
+		}
+
+		inline string getCorreo2() const {
+			return _correo2;
+		}
+
+		inline void setCorreo1(const string correo) {
+			this->_correo1=correo;
+		}
+
+		inline void setCorreo2(const string correo) {
+			this->_correo2=correo;
+		}
+
+		inline string getAnotaciones() const {
+			return _anotaciones;
+		}
+
+		inline void setAnotaciones(const string anotaciones){
+			this->_anotaciones=anotaciones;
+		}
+
+		inline int getContadorAcceso() const {
+			return _contadorAcceso;
+		}
+
+		inline void setContadorAcceso(const int contador){
+			this->_contadorAcceso=contador;
+		}
+
+		inline bool getFavorito() const {
+			return _favorito;
+		}
+
+		inline void setFavorito(const bool favorito){
+			this->_favorito=favorito;
+		}
+	};
+
+
+#endif /* CONTACTO_H_ */

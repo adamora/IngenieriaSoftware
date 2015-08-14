@@ -1,0 +1,39 @@
+#ifndef AGENDA_H_
+#define AGENDA_H_
+
+#include <iostream>
+#include "Contacto.h"
+using namespace std;
+
+using namespace Dentista;
+
+	class Agenda {
+	private:
+
+		Contacto* _pacientes;
+		int _numPacientes;
+
+
+	public:
+
+		inline Agenda(){
+			_pacientes=NULL;
+			_numPacientes=0;
+		}
+
+		inline ~Agenda(){
+			if(_pacientes!=NULL){
+				delete[]_pacientes;
+			}
+		}
+
+		inline int getNumPacientes() const{
+			return _numPacientes;
+		}
+
+		Agenda& operator[](int i);
+
+	};
+
+
+#endif
