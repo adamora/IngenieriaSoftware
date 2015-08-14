@@ -2,14 +2,14 @@
 // Name        : Agenda.cpp
 // Author      : Adam
 // Version     :
-// Copyright   : 
+// Copyright   :
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <iostream>
+#include "Agenda.h"
+
 using namespace std;
 
-int main() {
-	cout << "" << endl; // prints 
-	return 0;
+namespace Dentista {
+
 }
