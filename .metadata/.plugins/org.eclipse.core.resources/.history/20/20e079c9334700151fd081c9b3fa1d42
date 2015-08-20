@@ -1,0 +1,58 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 20 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "Agenda.h"
+#include <iostream>
+#include <stdlib.h>
+
+int main(void)
+{
+	Agenda agenda;
+	int opcion;
+	char tecla;
+	do{
+		system("clear");
+		cout << "MENÚ PRINCIPAL";
+		cout << "1. Ver Agenda Completa\n";
+		cout << "2. Insertar Paciente\n";
+		cout << "3. Buscar Paciente\n";
+		cout << "0. Salir\n";
+		cout << "Opcion: ";
+		cin >> opcion;
+		switch(opcion)
+		{
+			case 1:
+				system("clear");
+
+				int i;
+				cout << "Numero de pacientes: " << agenda.getNumPacientes();
+				for(i=0;i<agenda.getNumPacientes();i++){
+					agenda[i].getNombre();
+				}
+
+				cout << "Presione --intro-- para continuar";
+				while(tecla != '\n'){
+					cin >> tecla;
+				}
+				break;
+			case 2:
+			case 3:
+			case 0:
+				break;
+			default:
+				cout << "Opcion incorrecta\n";
+				cout << "Presione --intro-- para continuar";
+				while(tecla != '\n'){
+					cin >> tecla;
+				}
+		}
+
+	}while(opcion!=0);
+
+	return 0;
+}
+

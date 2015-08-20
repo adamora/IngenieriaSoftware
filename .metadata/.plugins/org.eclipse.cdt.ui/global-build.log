@@ -1,7 +1,40 @@
-17:04:04 **** Build of configuration Debug for project Agenda ****
+17:27:14 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
+Building file: ../src/main.cpp
 Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-make: *** [src/Agenda.o] Terminado
-Command canceled
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+../src/main.cpp: In function ‘void insertarNuevoPaciente(Agenda&)’:
+../src/main.cpp:45:2: error: ‘Dentista::Contacto::Contacto’ names the constructor, not the type
+  Contacto::Contacto c(nombre,dni,apellidos,tel1,tel2,co1,co2,nota);
+  ^
+../src/main.cpp:45:21: error: expected ‘;’ before ‘c’
+  Contacto::Contacto c(nombre,dni,apellidos,tel1,tel2,co1,co2,nota);
+                     ^
+../src/main.cpp:45:67: error: statement cannot resolve address of overloaded function
+  Contacto::Contacto c(nombre,dni,apellidos,tel1,tel2,co1,co2,nota);
+                                                                   ^
+../src/main.cpp:46:26: error: ‘c’ was not declared in this scope
+  agenda.insertarPaciente(c);
+                          ^
+make: *** [src/main.o] Error 1
+17:27:42 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
+Finished building target: Agenda
+ 
+17:29:31 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+make: No se hace nada para «all».
+17:29:55 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+make: No se hace nada para «all».
+17:30:43 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+make: No se hace nada para «all».

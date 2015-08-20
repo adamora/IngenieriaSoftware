@@ -1,10 +1,6 @@
-17:04:04 **** Build of configuration Debug for project Agenda ****
+17:30:43 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-make: *** [src/Agenda.o] Terminado
-Command canceled
+make: No se hace nada para «all».
 
-17:04:05 Build Cancelled (took 1s.379ms)
+17:30:43 Build Finished (took 70ms)
 

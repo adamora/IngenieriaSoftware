@@ -9,6 +9,7 @@
 #define CONTACTO_H_
 
 #include <string>
+#include <iostream>
 using namespace std;
 
 namespace Dentista {
@@ -48,12 +49,25 @@ namespace Dentista {
 			//setRedesSociales
 		}
 
+		inline Contacto(string nombre,string dni, string apellidos,int tel1, int tel2, string co1, string co2, string nota){
+			cout << "AQUI LLEGA";
+			setNombre(nombre);
+			setDNI(dni);
+			setApellidos(apellidos);
+			setTel1(tel1);
+			setTel2(tel2);
+			setCorreo1(co1);
+			setCorreo2(co2);
+			setAnotaciones(nota);
+			setContadorAcceso(0);
+			setFavorito(false);
+		}
 		inline string getNombre() const {
 			return _nombre;
 		}
 
 		inline void setNombre(const string nombre) {
-			this->_nombre=nombre;
+			_nombre=nombre;
 		}
 
 		inline string getApellidos() const {
@@ -61,7 +75,7 @@ namespace Dentista {
 		}
 
 		inline void setApellidos(const string apellidos) {
-			this->_apellidos=apellidos;
+			_apellidos=apellidos;
 		}
 
 		inline string getDNI() const {
@@ -69,7 +83,7 @@ namespace Dentista {
 		}
 
 		inline void setDNI(const string dni){
-			this->_dni=dni;
+			_dni=dni;
 		}
 
 		inline int getTel1() const {
@@ -81,11 +95,11 @@ namespace Dentista {
 		}
 
 		inline void setTel1(const int telefono) {
-			this->_telefono1=telefono;
+			_telefono1=telefono;
 		}
 
 		inline void setTel2(const int telefono) {
-			this->_telefono2=telefono;
+			_telefono2=telefono;
 		}
 
 		inline string getCorreo1() const {
@@ -97,11 +111,11 @@ namespace Dentista {
 		}
 
 		inline void setCorreo1(const string correo) {
-			this->_correo1=correo;
+			_correo1=correo;
 		}
 
 		inline void setCorreo2(const string correo) {
-			this->_correo2=correo;
+			_correo2=correo;
 		}
 
 		inline string getAnotaciones() const {
@@ -109,7 +123,7 @@ namespace Dentista {
 		}
 
 		inline void setAnotaciones(const string anotaciones){
-			this->_anotaciones=anotaciones;
+			_anotaciones=anotaciones;
 		}
 
 		inline int getContadorAcceso() const {
@@ -117,7 +131,7 @@ namespace Dentista {
 		}
 
 		inline void setContadorAcceso(const int contador){
-			this->_contadorAcceso=contador;
+			_contadorAcceso=contador;
 		}
 
 		inline bool getFavorito() const {
@@ -125,8 +139,9 @@ namespace Dentista {
 		}
 
 		inline void setFavorito(const bool favorito){
-			this->_favorito=favorito;
+			_favorito=favorito;
 		}
+		Contacto operator =(const Contacto &p);
 	};
 }
 

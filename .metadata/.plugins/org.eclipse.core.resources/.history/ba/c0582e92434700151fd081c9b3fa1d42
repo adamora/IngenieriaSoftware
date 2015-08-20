@@ -1,0 +1,92 @@
+/*
+ * main.cpp
+ *
+ *  Created on: 20 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "Agenda.h"
+#include <iostream>
+#include <stdlib.h>
+
+int main(void)
+{
+	Agenda agenda;
+	int opcion;
+	char tecla;
+	do{
+		system("clear");
+		cout << "MENÚ PRINCIPAL";
+		cout << "1. Ver Agenda Completa\n";
+		cout << "2. Insertar Paciente\n";
+		cout << "3. Buscar Paciente\n";
+		cout << "0. Salir\n";
+		cout << "Opción: ";
+		cin >> opcion;
+		switch(opcion)
+		{
+			case 1:
+				system("clear");
+
+				int i;
+				cout << "Numero de pacientes: " << agenda.getNumPacientes();
+				for(i=0;i<agenda.getNumPacientes();i++){
+					cout << i << "Nombre: " << agenda[i].getNombre()"\n";
+				}
+
+				cout << "Presione --intro-- para continuar";
+				while(tecla != '\n'){
+					cin >> tecla;
+				}
+				break;
+			case 2:
+				string nombre,apellidos,dni,tel1,tel2,co1,co2,nota;
+				system("clear");
+				cout << ">>>>>>>AGREGANDO NUEVO PACIENTE<<<<<<<\n";
+				cout << "Inserte nombre: ";
+				cin >> nombre;
+				cout << "Inserte apellidos: ";
+				cin >> apellidos;
+				cout << "Inserte DNI: ";
+				cin >> dni;
+				cout << "Inserte Telefono 1:";
+				cin >> tel1;
+				cout << "Inserte Telefono 2:";
+				cin >> tel2;
+				cout << "Inserte Correo 1:";
+				cin >> co1;
+				cout << "Inserte Correo 2:";
+				cin >> co2;
+				cout << "Inserte Nota:";
+				cin >> nota;
+
+				Contacto c(nombre,dni,apellidos,tel1,tel2,co1,co2,nota);
+				insertarPaciente(c);
+				cout << "Presione --intro-- para continuar";
+				while(tecla != '\n'){
+					cin >> tecla;
+				}
+				break;
+			case 3:
+
+
+				cout << "Presione --intro-- para continuar";
+				while(tecla != '\n'){
+					cin >> tecla;
+				}
+				break;
+			case 0:
+				break;
+			default:
+				cout << "Opcion incorrecta\n";
+				cout << "Presione --intro-- para continuar";
+				while(tecla != '\n'){
+					cin >> tecla;
+				}
+		}
+
+	}while(opcion!=0);
+
+	return 0;
+}
+

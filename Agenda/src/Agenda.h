@@ -10,8 +10,8 @@
 
 #include <iostream>
 #include "Contacto.h"
-using namespace std;
 
+using namespace std;
 using namespace Dentista;
 
 	class Agenda {
@@ -38,9 +38,20 @@ using namespace Dentista;
 			return _numPacientes;
 		}
 
-		Agenda& operator[](int i);
-		void insertarPaciente(Contacto paciente);
-		void buscarPaciente(string dni);
+		inline void setNumPacientes(const int num){
+			_numPacientes=num;
+		}
+
+		/*inline Contacto& getPacientes() const{
+			return _pacientes;
+		}*/
+		inline void setPacientes(const Contacto& pacientes){
+			_pacientes[getNumPacientes()-1]=pacientes;
+		}
+
+		Contacto& operator[](int i);
+		void insertarPaciente(const Contacto &paciente);
+		Contacto& buscarPaciente(string dni);
 		void visualizarPaciente(string dni);
 		void eliminarPaciente(string dni);
 		void modificarPaciente(string dni, Contacto paciente);
@@ -50,6 +61,5 @@ using namespace Dentista;
 		//void verMasUsados();
 
 	};
-
 
 #endif

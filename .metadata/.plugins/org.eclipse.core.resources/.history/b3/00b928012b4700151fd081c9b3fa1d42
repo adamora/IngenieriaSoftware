@@ -1,0 +1,43 @@
+//============================================================================
+// Name        : Agenda.cpp
+// Author      : Adam
+// Version     :
+// Copyright   :
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include "Agenda.h"
+#include <fstream>
+#include <cassert>
+
+using namespace std;
+using namespace Dentista;
+
+Contacto& Agenda::operator [] (int i)
+{
+	assert(i>=0 && i<_numPacientes);
+	return _pacientes[i];
+}
+
+void Agenda::insertarPaciente(Contacto paciente)
+{
+	int i;
+	int	num=getNumPacientes();
+	num++;
+	setNumPacientes(num);
+
+	Contacto* pacientes=new Contacto[num];
+
+	for(i=0;i<num;i++)
+	{
+		if(i==num-1){
+			pacientes[i]=paciente;
+		}else{
+			pacientes[i]=this->_pacientes[i];
+		}
+	}
+
+	setPacientes(pacientes);
+}
+
+
