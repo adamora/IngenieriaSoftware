@@ -60,7 +60,7 @@ void Agenda::insertarPaciente(const Contacto &paciente)
 	for(i=0;i<_numPacientes;i++){
 		_pacientes[i]=pacientes[i];
 	}
-	delete[] pacientes;
+
 }
 
 bool Agenda::buscarPaciente(const string dni)
