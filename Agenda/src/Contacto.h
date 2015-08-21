@@ -8,11 +8,11 @@
 #ifndef CONTACTO_H_
 #define CONTACTO_H_
 
-#include <string>
+//#include <string>
 #include <iostream>
-using namespace std;
 
 namespace Dentista {
+using namespace std;
 
 	class Contacto {
 
@@ -34,7 +34,7 @@ namespace Dentista {
 
 	public:
 
-		inline Contacto(){
+		/*inline Contacto(){
 			setNombre("");
 			setDNI("");
 			setApellidos("");
@@ -47,10 +47,21 @@ namespace Dentista {
 			setContadorAcceso(0);
 			setFavorito(false);
 			//setRedesSociales
+		}*/
+		inline Contacto(void){
+			_nombre="NULL";
+			_dni="NULL";
+			_apellidos="NULL";
+			_telefono1=0;
+			_telefono2=0;
+			_correo1="NULL";
+			_correo2="NULL";
+			_anotaciones="NULL";
+			_contadorAcceso=0;
+			_favorito=false;
 		}
 
-		inline Contacto(string nombre,string dni, string apellidos,int tel1, int tel2, string co1, string co2, string nota){
-			cout << "AQUI LLEGA";
+		/*inline Contacto(string nombre="NULL",string dni="NULL", string apellidos="NULL",int tel1=0, int tel2=0, string co1="NULL", string co2="NULL", string nota="NULL"){
 			setNombre(nombre);
 			setDNI(dni);
 			setApellidos(apellidos);
@@ -61,6 +72,19 @@ namespace Dentista {
 			setAnotaciones(nota);
 			setContadorAcceso(0);
 			setFavorito(false);
+		}*/
+
+		inline Contacto(const Contacto &c){
+			setNombre(c.getNombre());
+			setDNI(c.getDNI());
+			setApellidos(c.getApellidos());
+			setTel1(c.getTel1());
+			setTel2(c.getTel2());
+			setCorreo1(c.getCorreo1());
+			setCorreo2(c.getCorreo2());
+			setAnotaciones(c.getAnotaciones());
+			setContadorAcceso(c.getContadorAcceso());
+			setFavorito(c.getFavorito());
 		}
 		inline string getNombre() const {
 			return _nombre;
@@ -141,11 +165,9 @@ namespace Dentista {
 		inline void setFavorito(const bool favorito){
 			_favorito=favorito;
 		}
+
 		Contacto operator =(const Contacto &p);
 	};
 }
-
-
-
 
 #endif /* CONTACTO_H_ */

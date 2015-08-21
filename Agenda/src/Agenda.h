@@ -9,57 +9,64 @@
 #define AGENDA_H_
 
 #include <iostream>
+#include <cstdlib>
 #include "Contacto.h"
 
 using namespace std;
-using namespace Dentista;
 
-	class Agenda {
-	private:
+namespace Dentista{
 
-		Contacto* _pacientes;
-		int _numPacientes;
+class Agenda {
+private:
+
+	Contacto* _pacientes;
+	int _numPacientes;
 
 
-	public:
+public:
 
-		inline Agenda(){
-			_pacientes=NULL;
-			_numPacientes=0;
+	inline Agenda(){
+		_pacientes=NULL;
+		_numPacientes=0;
+	}
+
+	/*inline ~Agenda(){
+		if(_pacientes!=NULL){
+			delete[]_pacientes;
 		}
+	}*/
 
-		inline ~Agenda(){
-			if(_pacientes!=NULL){
-				delete[]_pacientes;
-			}
-		}
+	inline int getNumPacientes() const{
+		return _numPacientes;
+	}
 
-		inline int getNumPacientes() const{
-			return _numPacientes;
-		}
+	inline void setNumPacientes(const int num){
+		_numPacientes=num;
+	}
 
-		inline void setNumPacientes(const int num){
-			_numPacientes=num;
-		}
+	/*inline Contacto& getPacientes() const{
+		return _pacientes;
+	}*/
 
-		/*inline Contacto& getPacientes() const{
-			return _pacientes;
-		}*/
-		inline void setPacientes(const Contacto& pacientes){
-			_pacientes[getNumPacientes()-1]=pacientes;
-		}
+	/*inline void setPacientes(const Contacto& pacientes){
+		cout << "DENTRO\n";
+		*_pacientes=pacientes;
+		cout << "NO TE LO CREES\n";
+	}*/
 
-		Contacto& operator[](int i);
-		void insertarPaciente(const Contacto &paciente);
-		Contacto& buscarPaciente(string dni);
-		void visualizarPaciente(string dni);
-		void eliminarPaciente(string dni);
-		void modificarPaciente(string dni, Contacto paciente);
-		//void hacerInformes();
-		void hacerCopia(char nombreFichero);
-		void verFavoritos();
-		//void verMasUsados();
+	Contacto& operator[](int i);
+	Agenda& operator = (Agenda &agenda);
+	void insertarPaciente(const Contacto &paciente);
+	Contacto& buscarPaciente(string dni);
+	void visualizarPaciente(string dni);
+	void eliminarPaciente(string dni);
+	void modificarPaciente(string dni, Contacto paciente);
+	//void hacerInformes();
+	void hacerCopia(char nombreFichero);
+	void verFavoritos();
+	//void verMasUsados();
 
-	};
+};
+}
 
 #endif

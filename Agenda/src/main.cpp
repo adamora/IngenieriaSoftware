@@ -9,12 +9,13 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <stdio.h>
 
-using namespace Dentista;
 using namespace std;
+using namespace Dentista;
 
 void insertarNuevoPaciente(Agenda& agenda){
-	system("clear");
+	//system("clear");
 	string nombre;
 	string apellidos;
 	string dni;
@@ -23,26 +24,43 @@ void insertarNuevoPaciente(Agenda& agenda){
 	string nota;
 	int tel1,tel2;
 
+	Contacto c;
 
 	cout << ">>>>>>>AGREGANDO NUEVO PACIENTE<<<<<<<\n";
+
 	cout << "Inserte nombre: ";
 	cin >> nombre;
+	c.setNombre(nombre);
+
 	cout << "Inserte apellidos: ";
 	cin >> apellidos;
+	c.setApellidos(apellidos);
+
 	cout << "Inserte DNI: ";
 	cin >> dni;
+	c.setDNI(dni);
+
 	cout << "Inserte Telefono 1:";
 	cin >> tel1;
+	c.setTel1(tel1);
+
 	cout << "Inserte Telefono 2:";
 	cin >> tel2;
+	c.setTel2(tel2);
+
 	cout << "Inserte Correo 1:";
 	cin >> co1;
+	c.setCorreo1(co1);
+
 	cout << "Inserte Correo 2:";
 	cin >> co2;
+	c.setCorreo2(co2);
+
 	cout << "Inserte Nota:";
 	cin >> nota;
+	c.setAnotaciones(nota);
+	cout << "Numero casillas agenda " << agenda.getNumPacientes() << "\n";
 
-	Contacto c(nombre,dni,apellidos,tel1,tel2,co1,co2,nota);
 	agenda.insertarPaciente(c);
 }
 
@@ -67,7 +85,7 @@ int main(void)
 		switch(opcion)
 		{
 			case 1:
-				system("clear");
+				//system("clear");
 
 				int i;
 				cout << "Numero de pacientes: " << agenda.getNumPacientes() << "\n";
@@ -83,7 +101,7 @@ int main(void)
 
 			case 2:
 
-				system("clear");
+				//system("clear");
 
 				insertarNuevoPaciente(agenda);
 
@@ -94,7 +112,7 @@ int main(void)
 				break;
 
 			case 3:
-				system("clear");
+				//system("clear");
 
 				cout << "BUSQUEDA -> Introduzca DNI: ";
 				cin >> dni;
@@ -112,7 +130,7 @@ int main(void)
 
 			case 0:
 				cout << "Saliendo del programa...\n";
-				break;
+				exit(0);
 
 			default:
 				cout << "Opcion incorrecta\n";

@@ -10,8 +10,7 @@
 #include <fstream>
 #include <cassert>
 
-using namespace std;
-using namespace Dentista;
+namespace Dentista{
 
 Contacto& Agenda::operator [] (int i)
 {
@@ -19,15 +18,32 @@ Contacto& Agenda::operator [] (int i)
 	return _pacientes[i];
 }
 
+Agenda& Agenda::operator = (Agenda &agenda)
+{
+	int i;
+
+	if(_pacientes!=NULL)
+		delete[] _pacientes;
+
+	_numPacientes=agenda._numPacientes;
+	_pacientes=new Contacto[_numPacientes];
+
+	for(i=0;i<_numPacientes;i++){
+		_pacientes[i]=agenda._pacientes[i];
+	}
+	return *this;
+}
+
 void Agenda::insertarPaciente(const Contacto &paciente)
 {
 	int i;
-	int	num=getNumPacientes();
+	int	num=this->getNumPacientes();
 	num++;
-	setNumPacientes(num);
+	this->setNumPacientes(num);
+	cout << "aqui llega\n";
 
 	Contacto* pacientes=new Contacto[num];
-
+	cout << "reserva bien hecha\n";
 	for(i=0;i<num;i++)
 	{
 		if(i==num-1){
@@ -37,7 +53,17 @@ void Agenda::insertarPaciente(const Contacto &paciente)
 		}
 	}
 
-	setPacientes(*pacientes);
+
+	delete[] _pacientes;
+	_pacientes=new Contacto[_numPacientes];
+
+	for(i=0;i<_numPacientes;i++){
+		_pacientes[i]=pacientes[i];
+	}
+
+
+
+	cout << "ni de coña\n";
 }
 
 Contacto& Agenda::buscarPaciente(const string dni)
@@ -61,5 +87,5 @@ Contacto& Agenda::buscarPaciente(const string dni)
 		return _pacientes[0];
 	}
 }
-
+}
 
