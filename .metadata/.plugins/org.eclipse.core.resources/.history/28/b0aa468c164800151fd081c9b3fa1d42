@@ -6,7 +6,6 @@
  */
 
 #include "Agenda.h"
-#include "SGDBFichero.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -135,8 +134,7 @@ int main(void)
 		cout << "4. Eliminar Paciente\n";
 		cout << "5. Modificar Paciente\n";
 		cout << "6. Ver Favoritos\n";
-		cout << "7. Agregar Favorito\n";
-		cout << "8. Guardar en Fichero\n";
+		cout << "7. Agregar Favorito\n"
 		cout << "0. Salir\n";
 		cout << "Opción: ";
 		cin >> opcion;
@@ -296,26 +294,6 @@ int main(void)
 					tecla=cin.get();
 					tecla=cin.get();
 					}
-				break;
-
-			case 8:
-				cout << ">>>>>>>GENERAR FICHERO<<<<<<<\n";
-
-				string nomFich;
-				cout << "Introduzca nombre del fichero: ";
-				cin >> nomFich;
-
-				SGDBFichero nuevo(nomFich);
-				nuevo.guardar(agenda);
-
-				cout << "Operación realizada exitosamente\n";
-
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-					}
-
 				break;
 			case 0:
 				cout << "Saliendo del programa...\n";

@@ -301,22 +301,6 @@ int main(void)
 			case 8:
 				cout << ">>>>>>>GENERAR FICHERO<<<<<<<\n";
 
-				string nomFich;
-				cout << "Introduzca nombre del fichero: ";
-				cin >> nomFich;
-
-				SGDBFichero nuevo(nomFich);
-				nuevo.guardar(agenda);
-
-				cout << "Operación realizada exitosamente\n";
-
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-					}
-
-				break;
 			case 0:
 				cout << "Saliendo del programa...\n";
 				exit(0);

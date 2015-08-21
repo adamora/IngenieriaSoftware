@@ -1,0 +1,28 @@
+/*
+ * SGDBFichero.h
+ *
+ *  Created on: 21 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef SGDBFICHERO_H_
+#define SGDBFICHERO_H_
+
+using namespace std;
+
+namespace Dentista{
+
+class SGDBFichero:public SGDB{
+
+	private:
+
+		string _fichero;
+
+	public:
+
+};
+
+}
+
+
+#endif /* SGDBFICHERO_H_ */

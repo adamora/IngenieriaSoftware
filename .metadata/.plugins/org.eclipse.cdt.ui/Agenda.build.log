@@ -1,19 +1,44 @@
-15:55:59 **** Incremental Build of configuration Debug for project Agenda ****
+18:36:14 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
+Building file: ../src/SGDB.cpp
 Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-../src/Agenda.cpp: In member function ‘Dentista::Contacto& Dentista::Agenda::visualizarPaciente(std::string)’:
-../src/Agenda.cpp:98:1: warning: control reaches end of non-void function [-Wreturn-type]
- }
- ^
-Finished building: ../src/Agenda.cpp
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDB.d" -MT"src/SGDB.d" -o "src/SGDB.o" "../src/SGDB.cpp"
+Finished building: ../src/SGDB.cpp
  
-Building target: Agenda
-Invoking: Cross G++ Linker
-g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
-Finished building target: Agenda
- 
+Building file: ../src/SGDBFichero.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDBFichero.d" -MT"src/SGDBFichero.d" -o "src/SGDBFichero.o" "../src/SGDBFichero.cpp"
+In file included from ../src/SGDBFichero.cpp:8:0:
+../src/SGDBFichero.h: In member function ‘void Dentista::SGDBFichero::guardar(const Dentista::Agenda&)’:
+../src/SGDBFichero.h:39:25: error: no matching function for call to ‘std::basic_ofstream<char>::basic_ofstream(std::string&)’
+    ofstream fich(fichAux);
+                         ^
+../src/SGDBFichero.h:39:25: note: candidates are:
+In file included from ../src/SGDBFichero.h:11:0,
+                 from ../src/SGDBFichero.cpp:8:
+/usr/include/c++/4.8/fstream:640:7: note: std::basic_ofstream<_CharT, _Traits>::basic_ofstream(const char*, std::ios_base::openmode) [with _CharT = char; _Traits = std::char_traits<char>; std::ios_base::openmode = std::_Ios_Openmode]
+       basic_ofstream(const char* __s,
+       ^
+/usr/include/c++/4.8/fstream:640:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘const char*’
+/usr/include/c++/4.8/fstream:625:7: note: std::basic_ofstream<_CharT, _Traits>::basic_ofstream() [with _CharT = char; _Traits = std::char_traits<char>]
+       basic_ofstream(): __ostream_type(), _M_filebuf()
+       ^
+/usr/include/c++/4.8/fstream:625:7: note:   candidate expects 0 arguments, 1 provided
+/usr/include/c++/4.8/fstream:599:11: note: std::basic_ofstream<char>::basic_ofstream(const std::basic_ofstream<char>&)
+     class basic_ofstream : public basic_ostream<_CharT,_Traits>
+           ^
+/usr/include/c++/4.8/fstream:599:11: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘const std::basic_ofstream<char>&’
+In file included from ../src/SGDB.h:11:0,
+                 from ../src/SGDBFichero.h:15,
+                 from ../src/SGDBFichero.cpp:8:
+../src/Agenda.h:22:12: error: ‘Dentista::Contacto* Dentista::Agenda::_pacientes’ is private
+  Contacto* _pacientes;
+            ^
+In file included from ../src/SGDBFichero.cpp:8:0:
+../src/SGDBFichero.h:42:26: error: within this context
+    Contacto* it = agenda._pacientes;
+                          ^
+make: *** [src/SGDBFichero.o] Error 1
 
-15:56:01 Build Finished (took 1s.728ms)
+18:36:16 Build Finished (took 1s.829ms)
 

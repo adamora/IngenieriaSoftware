@@ -305,16 +305,10 @@ int main(void)
 				cout << "Introduzca nombre del fichero: ";
 				cin >> nomFich;
 
-				SGDBFichero nuevo(nomFich);
-				nuevo.guardar(agenda);
 
-				cout << "Operación realizada exitosamente\n";
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-					}
+				SGDBFichero copiaSeg(nomFich);
+
 
 				break;
 			case 0:
