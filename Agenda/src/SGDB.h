@@ -13,6 +13,7 @@
 namespace Dentista{
 	class SGDB{
 	public:
+
 		virtual ~SGDB(){};
 
 		virtual void guardar(Agenda& pacientes) = 0;

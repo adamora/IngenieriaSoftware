@@ -6,6 +6,7 @@
  */
 
 #include "Agenda.h"
+#include "SGDB.h"
 #include "SGDBFichero.h"
 
 #include <iostream>
@@ -124,6 +125,8 @@ int main(void)
 	int opcion;
 	char tecla;
 	string dni;
+
+	string nomFich;
 
 	do{
 		tecla='b';
@@ -299,9 +302,10 @@ int main(void)
 				break;
 
 			case 8:
+			{
 				cout << ">>>>>>>GENERAR FICHERO<<<<<<<\n";
 
-				string nomFich;
+
 				cout << "Introduzca nombre del fichero: ";
 				cin >> nomFich;
 
@@ -317,6 +321,7 @@ int main(void)
 					}
 
 				break;
+			}
 			case 0:
 				cout << "Saliendo del programa...\n";
 				exit(0);

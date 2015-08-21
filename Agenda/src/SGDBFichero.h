@@ -8,8 +8,12 @@
 #ifndef SGDBFICHERO_H_
 #define SGDBFICHERO_H_
 
-#include<fstream>
-#include<iostream>
+#include <string>
+#include <list>
+#include <fstream>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
 
 
 #include "SGDB.h"
@@ -26,33 +30,41 @@ class SGDBFichero:public SGDB{
 		string _fichero;
 
 	public:
-		//SGDBFichero() throw() {}
-		inline SGDBFichero(string fichero)
+		SGDBFichero() throw() {}
+		SGDBFichero(string fichero) throw ()
 		{
 			_fichero=fichero;
 		}
 		virtual ~SGDBFichero(){};
 
-		void guardar(const Agenda& agenda){
+		void guardar(Agenda& agenda){
 			int i;
 			string fichAux="FichAux.tmp";
-			ofstream fich(fichAux);
+			ofstream fich(fichAux.c_str());
 
 			fich.open(fichAux.c_str(),ios::in);
-			Contacto* it = agenda._pacientes;
+			Contacto* it = agenda.getPacientes();
 
+			Contacto personaAux;
 			for(i=0;i<agenda.getNumPacientes();i++)
 			{
-				fich << it[i].getNombre() << it[i].getApellidos() << it[i].getDNI() << it[i].getTel1() << it[i].getTel2() << it[i].getCorreo1() << it[i].getCorreo2() << it[i].getFavorito() << it[i].getAnotaciones() << it[i].getContadorAcceso();
+				personaAux = it[i];
+				cout << "DATO: " << personaAux.getNombre() << "\n";
+				fich.write(personaAux.getNombre().c_str(),sizeof(char *));
 			}
+
+			/*for(i=0;i<agenda.getNumPacientes();i++)
+			{
+				fich << it[i].getNombre() << it[i].getApellidos() << it[i].getDNI() << it[i].getTel1() << it[i].getTel2() << it[i].getCorreo1() << it[i].getCorreo2() << it[i].getFavorito() << it[i].getAnotaciones() << it[i].getContadorAcceso();
+			}*/
 
 			fich.close();
 
 			remove(_fichero.c_str());
 			rename(fichAux.c_str(), _fichero.c_str());
-		}
+		};
 
-		void setFichero(std::string f) { _fichero = f; }
+		void setFichero(string f) { _fichero = f; }
 };
 
 }

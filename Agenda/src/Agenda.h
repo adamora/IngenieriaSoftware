@@ -44,9 +44,9 @@ public:
 		_numPacientes=num;
 	}
 
-	/*inline Contacto& getPacientes() const{
+	inline Contacto* getPacientes() const{
 		return _pacientes;
-	}*/
+	}
 
 	/*inline void setPacientes(const Contacto& pacientes){
 		cout << "DENTRO\n";
