@@ -97,31 +97,5 @@ Contacto& Agenda::visualizarPaciente(const string dni)
 	}
 }
 
-void Agenda::eliminarPaciente(string dni)
-{
-	int i,j=0;
-	Contacto* auxiliar=new Contacto[getNumPacientes()-1];
-
-	for(i=0;i<this->getNumPacientes();i++)
-	{
-		if(_pacientes[i].getDNI()!=dni)
-		{
-			auxiliar[j]=_pacientes[i];
-			j++;
-		}
-	}
-
-	int num=this->getNumPacientes()-1;
-	this->setNumPacientes(num);
-
-	delete[] _pacientes;
-	_pacientes=new Contacto[_numPacientes];
-
-	for(i=0;i<_numPacientes;i++){
-		_pacientes[i]=auxiliar[i];
-	}
-
-}
-
 }
 

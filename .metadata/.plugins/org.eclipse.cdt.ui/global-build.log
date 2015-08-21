@@ -1,22 +1,5 @@
-12:17:36 **** Incremental Build of configuration Debug for project Agenda ****
+13:35:49 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-Finished building: ../src/Agenda.cpp
- 
-Building target: Agenda
-Invoking: Cross G++ Linker
-g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
-Finished building target: Agenda
- 
-12:19:32 **** Incremental Build of configuration Debug for project Agenda ****
-make all 
-Building file: ../src/Agenda.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-Finished building: ../src/Agenda.cpp
- 
 Building file: ../src/main.cpp
 Invoking: Cross G++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
@@ -27,13 +10,11 @@ Invoking: Cross G++ Linker
 g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
 Finished building target: Agenda
  
-12:20:16 **** Incremental Build of configuration Debug for project Agenda ****
+13:35:52 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-Finished building: ../src/Agenda.cpp
- 
+make: No se hace nada para «all».
+13:36:37 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
 Building file: ../src/main.cpp
 Invoking: Cross G++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
@@ -44,23 +25,109 @@ Invoking: Cross G++ Linker
 g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
 Finished building target: Agenda
  
-12:29:25 **** Incremental Build of configuration Debug for project Agenda ****
+13:37:27 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
+Building file: ../src/main.cpp
 Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-../src/Agenda.cpp: In member function ‘void Dentista::Agenda::insertarPaciente(const Dentista::Contacto&)’:
-../src/Agenda.cpp:55:25: error: ‘setPacientes’ was not declared in this scope
-  setPacientes(*pacientes);
-                         ^
-make: *** [src/Agenda.o] Error 1
-12:30:36 **** Incremental Build of configuration Debug for project Agenda ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+../src/main.cpp: In function ‘int main()’:
+../src/main.cpp:82:3: error: expected ‘;’ before ‘cout’
+   cout << "0. Salir\n";
+   ^
+make: *** [src/main.o] Error 1
+13:37:44 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
+Building file: ../src/main.cpp
 Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-Finished building: ../src/Agenda.cpp
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
  
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
+Finished building target: Agenda
+ 
+13:37:54 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
+Finished building target: Agenda
+ 
+13:39:34 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
+Finished building target: Agenda
+ 
+13:39:48 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/main.o   
+Finished building target: Agenda
+ 
+15:43:31 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+../src/main.cpp:76:10: warning: missing terminating " character [enabled by default]
+  cout << "¿Que datos desea modificar?\n
+          ^
+../src/main.cpp:76:2: error: missing terminating " character
+  cout << "¿Que datos desea modificar?\n
+  ^
+../src/main.cpp:77:4: error: stray ‘\’ in program
+    1) Nombre\n
+    ^
+../src/main.cpp:78:4: error: stray ‘\’ in program
+    2) Apellidos\n
+    ^
+../src/main.cpp:79:4: error: stray ‘\’ in program
+    3) Telefono 1\n
+    ^
+../src/main.cpp:80:4: error: stray ‘\’ in program
+    4) Telefono 2\n
+    ^
+../src/main.cpp:81:4: error: stray ‘\’ in program
+    5) Correo 1\n
+    ^
+../src/main.cpp:82:4: error: stray ‘\’ in program
+    6) Correo 2\n
+    ^
+../src/main.cpp:83:4: error: stray ‘\’ in program
+    7) Anotaciones\n
+    ^
+../src/main.cpp:84:12: warning: missing terminating " character [enabled by default]
+    Opcion: ";
+            ^
+../src/main.cpp:84:4: error: missing terminating " character
+    Opcion: ";
+    ^
+../src/main.cpp: In function ‘void modificarPaciente(std::string, Dentista::Agenda&)’:
+../src/main.cpp:77:5: error: expected ‘;’ before ‘)’ token
+    1) Nombre\n
+     ^
+make: *** [src/main.o] Error 1
+15:44:33 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
 Building file: ../src/main.cpp
 Invoking: Cross G++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"

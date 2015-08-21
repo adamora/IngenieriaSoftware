@@ -40,10 +40,10 @@ void Agenda::insertarPaciente(const Contacto &paciente)
 	int	num=this->getNumPacientes();
 	num++;
 	this->setNumPacientes(num);
-
+	cout << "aqui llega\n";
 
 	Contacto* pacientes=new Contacto[num];
-
+	cout << "reserva bien hecha\n";
 	for(i=0;i<num;i++)
 	{
 		if(i==num-1){
@@ -61,14 +61,18 @@ void Agenda::insertarPaciente(const Contacto &paciente)
 		_pacientes[i]=pacientes[i];
 	}
 
+
+
+	cout << "ni de coña\n";
 }
 
-bool Agenda::buscarPaciente(const string dni)
+Contacto& Agenda::buscarPaciente(const string dni)
 {
+	Contacto n;
 	int num=getNumPacientes();
 	if(num <= 0)
 	{
-		return false;
+		return _pacientes[0];
 	}
 	else{
 		int i;
@@ -77,51 +81,11 @@ bool Agenda::buscarPaciente(const string dni)
 		{
 			if(_pacientes[i].getDNI()==dni)
 			{
-				return true;
+				return _pacientes[i];
 			}
 		}
-		return false;
+		return _pacientes[0];
 	}
 }
-
-Contacto& Agenda::visualizarPaciente(const string dni)
-{
-	int i;
-
-	for(i=0;i<this->getNumPacientes();i++)
-	{
-		if(_pacientes[i].getDNI()==dni)
-		{
-			return _pacientes[i];
-		}
-	}
-}
-
-void Agenda::eliminarPaciente(string dni)
-{
-	int i,j=0;
-	Contacto* auxiliar=new Contacto[getNumPacientes()-1];
-
-	for(i=0;i<this->getNumPacientes();i++)
-	{
-		if(_pacientes[i].getDNI()!=dni)
-		{
-			auxiliar[j]=_pacientes[i];
-			j++;
-		}
-	}
-
-	int num=this->getNumPacientes()-1;
-	this->setNumPacientes(num);
-
-	delete[] _pacientes;
-	_pacientes=new Contacto[_numPacientes];
-
-	for(i=0;i<_numPacientes;i++){
-		_pacientes[i]=auxiliar[i];
-	}
-
-}
-
 }
 

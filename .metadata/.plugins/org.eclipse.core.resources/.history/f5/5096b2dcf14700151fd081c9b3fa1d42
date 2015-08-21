@@ -57,8 +57,8 @@ public:
 	Contacto& operator[](int i);
 	Agenda& operator = (Agenda &agenda);
 	void insertarPaciente(const Contacto &paciente);
-	bool buscarPaciente(string dni);
-	Contacto& visualizarPaciente(string dni);
+	Contacto& buscarPaciente(string dni);
+	void visualizarPaciente(string dni);
 	void eliminarPaciente(string dni);
 	void modificarPaciente(string dni, Contacto paciente);
 	//void hacerInformes();

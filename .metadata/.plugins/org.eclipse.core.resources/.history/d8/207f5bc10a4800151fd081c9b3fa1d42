@@ -73,7 +73,15 @@ void modificarPaciente(string dni,Agenda &agenda){
 	string nota;
 	int tel1,tel2;
 
-	cout << "¿Que datos desea modificar?\n1) Nombre\n2) Apellidos\n3) Telefono 1\n4) Telefono 2\n5) Correo 1\n6) Correo 2\n7) Anotaciones\nOpcion: ";
+	cout << "¿Que datos desea modificar?\n
+			1) Nombre\n
+			2) Apellidos\n
+			3) Telefono 1\n
+			4) Telefono 2\n
+			5) Correo 1\n
+			6) Correo 2\n
+			7) Anotaciones\n
+			Opcion: ";
 	cin >> opcion;
 	switch(opcion)
 	{

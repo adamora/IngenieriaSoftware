@@ -26,6 +26,7 @@ void insertarNuevoPaciente(Agenda& agenda){
 
 	Contacto c;
 
+	cout << ">>>>>>>AGREGAR NUEVO PACIENTE<<<<<<<\n";
 
 	cout << "Inserte nombre: ";
 	cin >> nombre;
@@ -73,47 +74,45 @@ void modificarPaciente(string dni,Agenda &agenda){
 	string nota;
 	int tel1,tel2;
 
-	cout << "¿Que datos desea modificar?\n1) Nombre\n2) Apellidos\n3) Telefono 1\n4) Telefono 2\n5) Correo 1\n6) Correo 2\n7) Anotaciones\nOpcion: ";
+	cout << "¿Que datos desea modificar?\n
+			1) Nombre\n
+			2) Apellidos\n
+			3) Telefono 1\n
+			4) Telefono 2\n
+			5) Correo 1\n
+			6) Correo 2\n
+			7) Anotaciones\n
+			8) Todo\n
+			Opcion: ";
 	cin >> opcion;
 	switch(opcion)
 	{
 		case 1:
-			cout << "Introduzca el nuevo nombre: ";
-			cin >> nombre;
+			cin
 			agenda.visualizarPaciente(dni).setNombre(nombre);
 			break;
 		case 2:
-			cout << "Introduzca el nuevo apellido: ";
-			cin >> apellidos;
-			agenda.visualizarPaciente(dni).setApellidos(apellidos);
+
 			break;
 		case 3:
-			cout << "Introduzca el nuevo Telefono 1: ";
-			cin >> tel1;
-			agenda.visualizarPaciente(dni).setTel1(tel1);
+
 			break;
 		case 4:
-			cout << "Introduzca el nuevo Telefono 2: ";
-			cin >> tel2;
-			agenda.visualizarPaciente(dni).setTel1(tel2);
+
 			break;
 		case 5:
-			cout << "Introduzca el nuevo Correo 1: ";
-			cin >> co1;
-			agenda.visualizarPaciente(dni).setCorreo1(co1);
+
 			break;
 		case 6:
-			cout << "Introduzca el nuevo Correo 2: ";
-			cin >> co2;
-			agenda.visualizarPaciente(dni).setCorreo1(co2);
+
 			break;
 		case 7:
-			cout << "Introduzca nuevas anotaciones: ";
-			cin >> nota;
-			agenda.visualizarPaciente(dni).setAnotaciones(nota);
+
+			break;
+		case 8:
+
 			break;
 	}
-	cout << "Operación realizada satisfactoriamente\n";
 }
 
 int main(void)
@@ -155,8 +154,9 @@ int main(void)
 				break;
 
 			case 2:
+
 				//system("clear");
-				cout << ">>>>>>>AGREGAR NUEVO PACIENTE<<<<<<<\n";
+
 				insertarNuevoPaciente(agenda);
 
 				cout << "Presione --intro-- para continuar";
@@ -233,7 +233,9 @@ int main(void)
 					}
 					if(tecla=='S')
 					{
-						modificarPaciente(dni,agenda);
+
+//
+
 					}
 					else
 					{
