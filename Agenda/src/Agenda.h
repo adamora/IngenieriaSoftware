@@ -34,6 +34,7 @@ public:
 		if(_pacientes!=NULL){
 			delete[]_pacientes;
 		}
+		_numPacientes=0;
 	}*/
 
 	inline int getNumPacientes() const{
@@ -48,15 +49,10 @@ public:
 		return _pacientes;
 	}
 
-	/*inline void setPacientes(const Contacto& pacientes){
-		cout << "DENTRO\n";
-		*_pacientes=pacientes;
-		cout << "NO TE LO CREES\n";
-	}*/
-
+	void borrarAgenda();
 	Contacto& operator[](int i);
 	Agenda& operator = (Agenda &agenda);
-	void insertarPaciente(const Contacto &paciente);
+	void insertarPaciente(Contacto &paciente);
 	bool buscarPaciente(string dni);
 	Contacto& visualizarPaciente(string dni);
 	void eliminarPaciente(string dni);

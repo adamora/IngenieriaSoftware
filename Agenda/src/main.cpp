@@ -118,6 +118,27 @@ void modificarPaciente(string dni,Agenda &agenda){
 	cout << "Operación realizada satisfactoriamente\n";
 }
 
+void mostrarPacientes(Agenda &agenda)
+{
+	int i;
+	cout << "Numero de pacientes: " << agenda.getNumPacientes() << "\n";
+	for(i=0;i<agenda.getNumPacientes();i++){
+		cout << i+1 << ") - Nombre y Apellidos: " << agenda[i].getNombre() << " " << agenda[i].getApellidos() << "; DNI: " << agenda[i].getDNI() << "; Telefono 1: " << agenda[i].getTel1() << "; Telefono 2: " << agenda[i].getTel2() << "; Correo 1: " << agenda[i].getCorreo1() << "; Correo 2: " << agenda[i].getCorreo2() << "; Notas: "<< agenda[i].getAnotaciones() << "\n";
+	}
+	Contacto c;
+}
+
+void presioneParaContinuar()
+{
+	char tecla;
+
+	cout << "Presione --intro-- para continuar";
+	while(tecla != '\n'){
+		tecla=cin.get();
+		tecla=cin.get();
+	}
+}
+
 int main(void)
 {
 	Agenda agenda;
@@ -140,6 +161,7 @@ int main(void)
 		cout << "6. Ver Favoritos\n";
 		cout << "7. Agregar Favorito\n";
 		cout << "8. Guardar en Fichero\n";
+		cout << "9. Cargar Fichero\n";
 		cout << "0. Salir\n";
 		cout << "Opción: ";
 		cin >> opcion;
@@ -148,17 +170,9 @@ int main(void)
 			case 1:
 				//system("clear");
 
-				int i;
-				cout << "Numero de pacientes: " << agenda.getNumPacientes() << "\n";
-				for(i=0;i<agenda.getNumPacientes();i++){
-					cout << i+1 << ") - Nombre: " << agenda[i].getNombre() << "\n";
-				}
+				mostrarPacientes(agenda);
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
+				presioneParaContinuar();
 				break;
 
 			case 2:
@@ -166,11 +180,7 @@ int main(void)
 				cout << ">>>>>>>AGREGAR NUEVO PACIENTE<<<<<<<\n";
 				insertarNuevoPaciente(agenda);
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
+				presioneParaContinuar();
 				break;
 
 			case 3:
@@ -185,12 +195,7 @@ int main(void)
 				else
 					cout << "No existe el contacto\n";
 
-
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
+				presioneParaContinuar();
 				break;
 
 			case 4:
@@ -218,12 +223,7 @@ int main(void)
 				else
 					cout << "No existe el contacto\n";
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
-
+				presioneParaContinuar();
 				break;
 
 			case 5:
@@ -250,23 +250,14 @@ int main(void)
 				else
 					cout << "No existe el contacto\n";
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
-
+				presioneParaContinuar();
 				break;
 
 			case 6:
 				cout << ">>>>>>>VER FAVORITOS<<<<<<<\n";
 				agenda.verFavoritos();
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
+				presioneParaContinuar();
 				break;
 
 			case 7:
@@ -294,11 +285,7 @@ int main(void)
 				else
 					cout << "No existe el contacto\n";
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-					}
+				presioneParaContinuar();
 				break;
 
 			case 8:
@@ -306,7 +293,7 @@ int main(void)
 				cout << ">>>>>>>GENERAR FICHERO<<<<<<<\n";
 
 
-				cout << "Introduzca nombre del fichero: ";
+				cout << "Introduzca el nombre del fichero: ";
 				cin >> nomFich;
 
 				SGDBFichero nuevo(nomFich);
@@ -314,12 +301,42 @@ int main(void)
 
 				cout << "Operación realizada exitosamente\n";
 
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-					}
+				presioneParaContinuar();
+				break;
+			}
+			case 9:
+			{
+				cout << ">>>>>>>CARGAR FICHERO<<<<<<<\n";
 
+				cout << "Introduzca el nombre del fichero: ";
+				cin >> nomFich;
+
+				SGDBFichero nuevo(nomFich);
+
+				Agenda aux=nuevo.cargar();
+
+				cout << "El contenido del fichero es el siguiente:\n";
+				mostrarPacientes(aux);
+
+				//
+				cout << "Desea cargarlo a la agenda? (S/N): ";
+				while(tecla != 'S' && tecla != 'N'){
+					cin >> tecla;
+				}
+				if(tecla=='S')
+				{
+					//BORRAR AGENDA
+					agenda.borrarAgenda();
+					agenda=aux;
+					cout << "Operación realizada exitosamente\n";
+				}
+				else
+				{
+					cout << "Operación cancelada\n";
+				}
+
+				//
+				presioneParaContinuar();
 				break;
 			}
 			case 0:
@@ -328,11 +345,7 @@ int main(void)
 
 			default:
 				cout << "Opcion incorrecta\n";
-				cout << "Presione --intro-- para continuar";
-				while(tecla != '\n'){
-					tecla=cin.get();
-					tecla=cin.get();
-				}
+				presioneParaContinuar();
 				break;
 		}
 
