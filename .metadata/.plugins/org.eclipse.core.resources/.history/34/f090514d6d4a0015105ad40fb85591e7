@@ -100,7 +100,6 @@ namespace Dentista{
 				return _pacientes[i];
 			}
 		}
-		return _pacientes[i];
 	}
 
 	void Agenda::eliminarPaciente(string dni)
@@ -146,7 +145,7 @@ namespace Dentista{
 		{
 			if(_pacientes[i].getFavorito()==true)
 			{
-				cout << "El paciente: " << _pacientes[i].getNombre() << " " << _pacientes[i].getApellidos() <<" con DNI: " << _pacientes[i].getDNI() << ", es favorito\n";
+				cout << "El paciente: " << _pacientes[i].getNombre() << " es favorito\n";
 				contador++;
 			}
 		}

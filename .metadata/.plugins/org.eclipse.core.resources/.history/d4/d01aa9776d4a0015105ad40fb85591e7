@@ -100,7 +100,6 @@ namespace Dentista{
 				return _pacientes[i];
 			}
 		}
-		return _pacientes[i];
 	}
 
 	void Agenda::eliminarPaciente(string dni)

@@ -1,0 +1,25 @@
+/*
+ * UI.h
+ *
+ *  Created on: 24 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef UI_H_
+#define UI_H_
+
+#include <iostream>
+#include <Agenda.h>
+
+using namespace std;
+
+namespace Dentista
+{
+
+
+
+}
+
+
+
+#endif /* UI_H_ */
