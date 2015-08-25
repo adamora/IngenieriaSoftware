@@ -6,6 +6,7 @@
  */
 
 #include "UI.h"
+#include <string>
 
 using namespace std;
 
@@ -29,35 +30,37 @@ namespace Dentista
 
 
 		cout << "Inserte nombre: ";
-		cin >> nombre;
+		cin.ignore();
+		getline(cin,nombre);
 		c.setNombre(nombre);
 
 		cout << "Inserte apellidos: ";
-		cin >> apellidos;
+		getline(cin,apellidos);
 		c.setApellidos(apellidos);
 
 		cout << "Inserte DNI: ";
 		cin >> dni;
 		c.setDNI(dni);
 
-		cout << "Inserte Telefono 1:";
+		cout << "Inserte Telefono 1: ";
 		cin >> tel1;
 		c.setTel1(tel1);
 
-		cout << "Inserte Telefono 2:";
+		cout << "Inserte Telefono 2: ";
 		cin >> tel2;
 		c.setTel2(tel2);
 
-		cout << "Inserte Correo 1:";
+		cout << "Inserte Correo 1: ";
 		cin >> co1;
 		c.setCorreo1(co1);
 
-		cout << "Inserte Correo 2:";
+		cout << "Inserte Correo 2: ";
 		cin >> co2;
 		c.setCorreo2(co2);
 
-		cout << "Inserte Nota:";
-		cin >> nota;
+		cout << "Inserte Nota: ";
+		cin.ignore();
+		getline(cin,nota);
 		c.setAnotaciones(nota);
 
 		agenda.insertarPaciente(c);

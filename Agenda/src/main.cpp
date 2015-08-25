@@ -25,7 +25,7 @@ void presioneParaContinuar()
 
 	cout << "Presione --intro-- para continuar";
 	while(tecla != '\n'){
-		tecla=cin.get();
+		cin.ignore();
 		tecla=cin.get();
 	}
 }
@@ -41,7 +41,7 @@ int menu()
 		cout << "3. Buscar Paciente\n";
 		cout << "4. Eliminar Paciente\n";
 		cout << "5. Modificar Paciente\n";
-		cout << "6. Ver Favoritos\n";
+		cout << "6. Ver Favoritos y Mas Frecuentes\n";
 		cout << "7. Agregar Favorito\n";
 		cout << "8. Guardar en Fichero\n";
 		cout << "9. Cargar Fichero\n";
@@ -147,6 +147,9 @@ int main(void)
 			case 6:
 				cout << ">>>>>>>VER FAVORITOS<<<<<<<\n";
 				agenda.verFavoritos();
+
+				cout << ">>>>>>>TOP 5 EN FRECUENTES<<<<<<<\n";
+				agenda.verMasUsados();
 
 				presioneParaContinuar();
 				break;

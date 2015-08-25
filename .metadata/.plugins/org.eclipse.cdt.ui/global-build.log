@@ -1,30 +1,130 @@
-16:50:09 **** Incremental Build of configuration Debug for project Agenda ****
+16:52:48 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-make: No se hace nada para «all».
-16:58:25 **** Incremental Build of configuration Debug for project Agenda ****
-make all 
-make: No se hace nada para «all».
-17:01:32 **** Incremental Build of configuration Debug for project Agenda ****
-make all 
-Building file: ../src/UI.cpp
+Building file: ../src/SGDBFichero.cpp
 Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/UI.d" -MT"src/UI.d" -o "src/UI.o" "../src/UI.cpp"
-Finished building: ../src/UI.cpp
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDBFichero.d" -MT"src/SGDBFichero.d" -o "src/SGDBFichero.o" "../src/SGDBFichero.cpp"
+In file included from ../src/SGDBFichero.cpp:8:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:85:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/SGDBFichero.cpp
+ 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:10:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:85:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/main.cpp
  
 Building target: Agenda
 Invoking: Cross G++ Linker
 g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   
 Finished building target: Agenda
  
-17:03:09 **** Incremental Build of configuration Debug for project Agenda ****
+16:52:53 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
+make: No se hace nada para «all».
+16:58:24 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+make: No se hace nada para «all».
+17:29:18 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/Agenda.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
+../src/Agenda.cpp: In member function ‘void Dentista::Agenda::verMasUsados()’:
+../src/Agenda.cpp:168:30: warning: ‘c’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     c[contador]=_pacientes[i];
+                              ^
+Finished building: ../src/Agenda.cpp
+ 
+Building file: ../src/SGDB.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDB.d" -MT"src/SGDB.d" -o "src/SGDB.o" "../src/SGDB.cpp"
+Finished building: ../src/SGDB.cpp
+ 
+Building file: ../src/SGDBFichero.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDBFichero.d" -MT"src/SGDBFichero.d" -o "src/SGDBFichero.o" "../src/SGDBFichero.cpp"
+In file included from ../src/SGDBFichero.cpp:8:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:85:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/SGDBFichero.cpp
+ 
 Building file: ../src/UI.cpp
 Invoking: Cross G++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/UI.d" -MT"src/UI.d" -o "src/UI.o" "../src/UI.cpp"
 Finished building: ../src/UI.cpp
+ 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:10:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:85:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/main.cpp
  
 Building target: Agenda
 Invoking: Cross G++ Linker
 g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   
 Finished building target: Agenda
  
+17:32:17 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/Agenda.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
+../src/Agenda.cpp: In member function ‘void Dentista::Agenda::verMasUsados()’:
+../src/Agenda.cpp:169:30: warning: ‘c’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     c[contador]=_pacientes[i];
+                              ^
+Finished building: ../src/Agenda.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   
+Finished building target: Agenda
+ 
+17:34:49 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/Agenda.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
+Finished building: ../src/Agenda.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   
+Finished building target: Agenda
+ 
+17:36:55 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+make: No se hace nada para «all».
+17:37:13 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:10:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:85:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   
+Finished building target: Agenda
+ 
+17:37:21 **** Incremental Build of configuration Debug for project Agenda ****
+make all 
+make: No se hace nada para «all».

@@ -63,7 +63,7 @@ class SGDBFichero:public SGDB{
 			for(i=0;i<agenda.getNumPacientes();i++)
 			{
 				/*personaAux = agenda[i];
-				fich.wragendae((char *) (&personaAux), sizeof(Contacto));*/
+				fich.write((char *) (&personaAux), sizeof(Contacto));*/
 				fich << agenda[i].getNombre() << endl << agenda[i].getApellidos() << endl << agenda[i].getDNI() << endl << agenda[i].getTel1() << endl << agenda[i].getTel2() << endl << agenda[i].getCorreo1() << endl << agenda[i].getCorreo2() << endl << agenda[i].getFavorito() << endl << agenda[i].getAnotaciones() << endl << agenda[i].getContadorAcceso() << endl;
 
 			}
@@ -84,30 +84,42 @@ class SGDBFichero:public SGDB{
 			int contador = 0;
 			Agenda agAux;
 
-			ifstream fich(this->getFichero().c_str(),ios::in);
+			ifstream fich(this->getFichero().c_str(), ios::in);
 
 			//fich.read((char *) (&aux), sizeof(Contacto));
 
 
 			string nombre,apellidos,DNI,Correo1,Correo2,Anotaciones;
-			int Tel1, Tel2,ContadorAcceso;
-			bool Favorito;
+			string Tel1, Tel2,ContadorAcceso;
+			string Favorito;
 
 
 			while(!fich.eof())
 			{
-				fich >> nombre >> apellidos >> DNI >> Tel1 >> Tel2 >> Correo1 >> Correo2 >> Favorito >> Anotaciones >> ContadorAcceso;
+				//fich >> nombre >> apellidos >> DNI >> Tel1 >> Tel2 >> Correo1 >> Correo2 >> Favorito >> Anotaciones >> ContadorAcceso ;
+				getline(fich, nombre);
+				getline(fich, apellidos);
+				getline(fich, DNI);
+				getline(fich, Tel1);
+				getline(fich, Tel2);
+				getline(fich, Correo1);
+				getline(fich, Correo2);
+				getline(fich, Favorito);
+				getline(fich,Anotaciones);
+				getline(fich, ContadorAcceso);
+
+
 
 				aux.setNombre(nombre);
 				aux.setApellidos(apellidos);
 				aux.setDNI(DNI);
-				aux.setTel1(Tel1);
-				aux.setTel2(Tel2);
+				aux.setTel1(atoi(Tel1.c_str()));
+				aux.setTel2(atoi(Tel2.c_str()));
 				aux.setCorreo1(Correo1);
 				aux.setCorreo2(Correo2);
-				aux.setFavorito(Favorito);
+				aux.setFavorito(atoi(Favorito.c_str()));
 				aux.setAnotaciones(Anotaciones);
-				aux.setContadorAcceso(ContadorAcceso);
+				aux.setContadorAcceso(atoi(ContadorAcceso.c_str()));
 
 				agAux.insertarPaciente(aux);
 				//fich.read((char*) (&aux), sizeof(Contacto));

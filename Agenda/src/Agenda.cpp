@@ -82,6 +82,7 @@ namespace Dentista{
 			{
 				if(_pacientes[i].getDNI()==dni)
 				{
+					_pacientes[i].setContadorAcceso(_pacientes[i].getContadorAcceso()+1);
 					return true;
 				}
 			}
@@ -153,6 +154,51 @@ namespace Dentista{
 		if(contador==0)
 		{
 			cout << "No hay pacientes favoritos\n";
+		}
+	}
+
+	void Agenda::verMasUsados()
+	{
+		int i,contador=0;
+		Contacto *c=new Contacto[this->getNumPacientes()];
+		for(i=0;i<this->getNumPacientes();i++)
+		{
+			if(_pacientes[i].getContadorAcceso()>=1)
+			{
+				//cout << "El paciente: " << _pacientes[i].getNombre() << " " << _pacientes[i].getApellidos() <<" con DNI: " << _pacientes[i].getDNI() << ", es frecuente\n";
+				c[contador]=_pacientes[i];
+				contador++;
+			}
+		}
+		if(contador==0)
+		{
+			cout << "No hay pacientes frecuentes\n";
+		}
+		else
+		{
+			Contacto aux;
+			int j=0;
+
+			for(i=0; i<contador-1; i++)
+			{
+				for(j=i+1;j<contador; j++)
+				{
+					if(c[j].getContadorAcceso()>c[i].getContadorAcceso())
+					{
+						aux=c[i];
+						c[i]=c[j];
+						c[j]=aux;
+					}
+				}
+			}
+
+			for(i=0;i<contador;i++)
+			{
+				if(i<5)
+				{
+					cout << "El paciente: " << c[i].getNombre() << " " << c[i].getApellidos() <<" con DNI: " << c[i].getDNI() << ", es frecuente\n";
+				}
+			}
 		}
 	}
 

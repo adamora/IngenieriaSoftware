@@ -60,7 +60,7 @@ public:
 	//void hacerInformes();
 	void hacerCopia(char nombreFichero);
 	void verFavoritos();
-	//void verMasUsados();
+	void verMasUsados();
 
 };
 }
