@@ -1,0 +1,29 @@
+/*
+ * Foo.cpp
+ *
+ *  Created on: 26 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "gtest/gtest.h"
+#include "Foo.h"
+
+using namespace foo;
+	Foo::Foo() {
+		// TODO Auto-generated constructor stub
+
+	}
+
+	Foo::~Foo() {
+		// TODO Auto-generated destructor stub
+	}
+
+	class FooTest : public ::testing::Test {
+	protected:
+	  Foo foo;
+	};
+
+	TEST_F(FooTest, Foo) {
+	  ASSERT_TRUE(foo.foo());
+	}
+

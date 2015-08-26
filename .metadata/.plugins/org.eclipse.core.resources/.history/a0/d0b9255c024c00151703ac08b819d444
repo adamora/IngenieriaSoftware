@@ -1,0 +1,24 @@
+/*
+ * Contacto_unittest.cpp
+ *
+ *  Created on: 26 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "Contacto.h"
+#include "gtest/gtest.h"
+
+using namespace std;
+using namespace Dentista;
+
+TEST(Contacto, getYsetNombre){
+	Contacto c;
+	c.setNombre("Prueba");
+	EXPECT_EQ("Prueba", c.getNombre());
+}
+
+TEST(CONTACTO, getYsetApellidos){
+	Contacto c;
+	c.setApellidos("Ambos Apellidos");
+	EXPECT_EQ("Ambos Apellidos", c.getNombre());
+}

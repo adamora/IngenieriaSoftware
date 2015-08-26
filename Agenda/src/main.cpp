@@ -35,6 +35,7 @@ int menu()
 	int opcion;
 
 	do{
+		system("clear");
 		cout << ">>>>>>>MENÚ PRINCIPAL<<<<<<<\n";
 		cout << "1. Ver Agenda Completa\n";
 		cout << "2. Insertar Paciente\n";
@@ -77,7 +78,7 @@ int main(void)
 		switch(opcion)
 		{
 			case 1:
-				//system("clear");
+				system("clear");
 
 				visualizarAgenda(agenda);
 
@@ -85,7 +86,7 @@ int main(void)
 				break;
 
 			case 2:
-				//system("clear");
+				system("clear");
 				cout << ">>>>>>>AGREGAR NUEVO PACIENTE<<<<<<<\n";
 				introducirDatosContacto(agenda);
 
@@ -93,7 +94,7 @@ int main(void)
 				break;
 
 			case 3:
-				//system("clear");
+				system("clear");
 
 				cout << ">>>>>>>BUSQUEDA DE PACIENTES<<<<<<<\n";
 				cout << "Introduzca DNI: ";
@@ -108,6 +109,7 @@ int main(void)
 				break;
 
 			case 4:
+				system("clear");
 				cout << ">>>>>>>ELIMINAR PACIENTE<<<<<<<\n";
 				cout << "Introduzca DNI del contacto que desee eliminar: ";
 				cin >> dni;
@@ -118,6 +120,7 @@ int main(void)
 				break;
 
 			case 5:
+				system("clear");
 				cout << ">>>>>>>MODIFICAR PACIENTE<<<<<<<\n";
 				cout << "Introduzca DNI del contacto que desee modificar: ";
 				cin >> dni;
@@ -145,6 +148,7 @@ int main(void)
 				break;
 
 			case 6:
+				system("clear");
 				cout << ">>>>>>>VER FAVORITOS<<<<<<<\n";
 				agenda.verFavoritos();
 
@@ -155,6 +159,7 @@ int main(void)
 				break;
 
 			case 7:
+				system("clear");
 				cout << ">>>>>>>AGREGAR FAVORITO<<<<<<<\n";
 				cout << "Introduzca DNI del contacto que desee modificar: ";
 				cin >> dni;
@@ -171,6 +176,7 @@ int main(void)
 
 			case 8:
 			{
+				system("clear");
 				cout << ">>>>>>>GENERAR FICHERO<<<<<<<\n";
 
 
@@ -187,6 +193,7 @@ int main(void)
 			}
 			case 9:
 			{
+				system("clear");
 				cout << ">>>>>>>CARGAR FICHERO<<<<<<<\n";
 
 				cout << "Introduzca el nombre del fichero: ";
@@ -221,10 +228,12 @@ int main(void)
 				break;
 			}
 			case 0:
+				system("clear");
 				cout << "Saliendo del programa...\n";
 				exit(0);
 
 			default:
+				system("clear");
 				cout << "Opcion incorrecta\n";
 				presioneParaContinuar();
 				break;

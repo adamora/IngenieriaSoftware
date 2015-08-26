@@ -1,0 +1,21 @@
+/*
+ * Foo.h
+ *
+ *  Created on: 26 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef FOO_H_
+#define FOO_H_
+
+namespace Foo{
+	class Foo {
+	public:
+		Foo();
+		virtual ~Foo();
+		bool foo(void) { return true; }
+	};
+}
+
+#endif /* FOO_H_ */
+
