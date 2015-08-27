@@ -1,0 +1,70 @@
+/*
+ * Agenda_unittest.cpp
+ *
+ *  Created on: 27 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "../src/Agenda.h"
+#include "../gtest/gtest.h"
+
+using namespace std;
+using namespace Dentista;
+
+TEST(Agenda, getYsetNumPacientes){
+	Agenda a;
+	a.setNumPacientes(2);
+	EXPECT_EQ(2, a.getNumPacientes());
+}
+
+TEST(Agenda, insertarCopiarYborrarAgenda){
+	Contacto c;
+	c.setNombre("Adam Compuesto");
+	c.setDNI("1");
+	Contacto c2;
+	c2.setNombre("Alex Compuestoo");
+	c2.setDNI("2");
+	Contacto c3[2];
+	c3[0]=c;
+	c3[1]=c2;
+
+	Agenda a;
+	a.insertarPaciente(c);
+	a.insertarPaciente(c2);
+
+	EXPECT_EQ(c3, a.getPacientes());
+	EXPECT_EQ("Adam Compuesto",a[0].getNombre());
+	EXPECT_EQ("Alex Compuestoo",a[1].getNombre());
+
+	Agenda b;
+	b=a;
+
+	EXPECT_EQ("Adam Compuesto",b[0].getNombre());
+	EXPECT_EQ("Alex Compuestoo",b[1].getNombre());
+
+	Contacto c4[1];
+	Contacto c4[0]=c;
+	b.eliminarPaciente("2");
+	EXPECT_EQ(c4,b.getPacientes());
+
+	a.borrarAgenda();
+}
+
+TEST(Agenda, buscarYmodificarPaciente){
+	Agenda a;
+	Contacto c;
+	c.setNombre("Adam");
+	c.setDNI("1");
+	a.insertarPaciente(c);
+
+	EXPECT_EQ(true,a.buscarPaciente("1"));
+
+	EXPECT_EQ(c,a.visualizarPaciente("1"));
+
+	Contacto modificado;
+	modificado = c;
+	modificado.setNombre("OtroNombre");
+	a.modificarPaciente(c.getDNI(),modificado);
+	EXPECT_EQ("OtroNombre",a.visualizarPaciente(c.getDNI()).getNombre());
+}
+

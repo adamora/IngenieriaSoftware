@@ -1,0 +1,35 @@
+/*
+ * Agenda_unittest.cpp
+ *
+ *  Created on: 27 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "../src/Agenda.h"
+#include "../gtest/gtest.h"
+
+using namespace std;
+using namespace Dentista;
+
+TEST(Agenda, getYsetNumPacientes){
+	Agenda a;
+	a.setNumPacientes(2);
+	EXPECT_EQ(2, a.getNumPacientes());
+}
+
+TEST(Agenda, insertarCopiarYborrarPacientes){
+	Contacto c;
+	c.setNombre("Adam Compuesto");
+	Contacto c2;
+	c2.setNombre("Alex Compuestoo");
+	Contacto c3[2];
+	Contacto c3[0]=c;
+	Contacto c3[1]=c2;
+
+	Agenda a;
+	a.insertarPaciente(c);
+	a.insertarPaciente(c2);
+	EXPECT_EQ(c3, a.getPacientes());
+
+}
+

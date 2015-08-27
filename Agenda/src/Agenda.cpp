@@ -202,6 +202,19 @@ namespace Dentista{
 		}
 	}
 
+	void Agenda::modificarPaciente(string dni, Contacto paciente)
+	{
+		int i;
+		for(i=0;i<this->getNumPacientes();i++)
+		{
+			if(dni==this->_pacientes[i].getDNI())
+			{
+				_pacientes[i]=paciente;
+				break;
+			}
+		}
+	}
+
 	void Agenda::borrarAgenda()
 	{
 		if(_pacientes!=NULL){

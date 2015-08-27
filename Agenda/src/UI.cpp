@@ -117,6 +117,7 @@ namespace Dentista
 				contacto.setAnotaciones(nota);
 				break;
 		}
+
 		cout << "Operación realizada satisfactoriamente\n";
 	}
 

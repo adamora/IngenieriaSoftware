@@ -58,7 +58,7 @@ public:
 	void eliminarPaciente(string dni);
 	void modificarPaciente(string dni, Contacto paciente);
 	//void hacerInformes();
-	void hacerCopia(char nombreFichero);
+	//void hacerCopia(char nombreFichero);
 	void verFavoritos();
 	void verMasUsados();
 
