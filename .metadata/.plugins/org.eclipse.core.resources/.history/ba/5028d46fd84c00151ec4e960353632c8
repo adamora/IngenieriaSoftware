@@ -1,0 +1,39 @@
+/*
+ * RedSocial.h
+ *
+ *  Created on: 27 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef REDSOCIAL_H_
+#define REDSOCIAL_H_
+
+using namespace std;
+
+namespace Dentista{
+
+	class RedSocial {
+		private:
+			string _nombreRed;
+			string _usuario;
+		public:
+			inline RedSocial()
+			{
+				_nombreRed="NULL";
+				_usuario="NULL";
+			}
+			//virtual ~RedSocial();
+
+			inline void setNombreRed(const string nombreRed) const
+			{
+				_nombreRed=nombreRed;
+			}
+
+			inline string getNombreREd()
+			{
+				return _nombreRed;
+			}
+	};
+
+}
+#endif /* REDSOCIAL_H_ */

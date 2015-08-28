@@ -1,6 +1,79 @@
-17:29:47 **** Incremental Build of configuration Debug for project Agenda ****
+13:40:51 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-make: No se hace nada para «all».
-17:56:34 **** Incremental Build of configuration Debug for project Agenda ****
+Building file: ../src/Agenda.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
+Finished building: ../src/Agenda.cpp
+ 
+Building file: ../src/Contacto.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Contacto.d" -MT"src/Contacto.d" -o "src/Contacto.o" "../src/Contacto.cpp"
+Finished building: ../src/Contacto.cpp
+ 
+Building file: ../src/RedSocial.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/RedSocial.d" -MT"src/RedSocial.d" -o "src/RedSocial.o" "../src/RedSocial.cpp"
+Finished building: ../src/RedSocial.cpp
+ 
+Building file: ../src/SGDB.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDB.d" -MT"src/SGDB.d" -o "src/SGDB.o" "../src/SGDB.cpp"
+Finished building: ../src/SGDB.cpp
+ 
+Building file: ../src/SGDBFichero.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDBFichero.d" -MT"src/SGDBFichero.d" -o "src/SGDBFichero.o" "../src/SGDBFichero.cpp"
+In file included from ../src/SGDBFichero.cpp:8:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:96:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/SGDBFichero.cpp
+ 
+Building file: ../src/UI.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/UI.d" -MT"src/UI.d" -o "src/UI.o" "../src/UI.cpp"
+Finished building: ../src/UI.cpp
+ 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:10:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:96:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/RedSocial.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   -lpthread
+Finished building target: Agenda
+ 
+13:41:41 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-make: No se hace nada para «all».
+Building file: ../src/SGDBFichero.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SGDBFichero.d" -MT"src/SGDBFichero.d" -o "src/SGDBFichero.o" "../src/SGDBFichero.cpp"
+In file included from ../src/SGDBFichero.cpp:8:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:96:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/SGDBFichero.cpp
+ 
+Building file: ../src/main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+In file included from ../src/main.cpp:10:0:
+../src/SGDBFichero.h: In member function ‘virtual Dentista::Agenda& Dentista::SGDBFichero::cargar()’:
+../src/SGDBFichero.h:96:11: warning: reference to local variable ‘agAux’ returned [-Wreturn-local-addr]
+    Agenda agAux;
+           ^
+Finished building: ../src/main.cpp
+ 
+Building target: Agenda
+Invoking: Cross G++ Linker
+g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/RedSocial.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   -lpthread
+Finished building target: Agenda
+ 

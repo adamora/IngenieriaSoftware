@@ -1,0 +1,18 @@
+/*
+ * RedSocial.cpp
+ *
+ *  Created on: 27 de ago. de 2015
+ *      Author: adam
+ */
+
+#include "RedSocial.h"
+
+RedSocial::RedSocial() {
+	// TODO Auto-generated constructor stub
+
+}
+
+RedSocial::~RedSocial() {
+	// TODO Auto-generated destructor stub
+}
+

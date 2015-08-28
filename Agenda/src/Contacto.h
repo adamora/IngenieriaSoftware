@@ -10,6 +10,7 @@
 
 //#include <string>
 #include <iostream>
+#include "RedSocial.h"
 
 namespace Dentista {
 using namespace std;
@@ -29,7 +30,8 @@ using namespace std;
 		string _anotaciones;
 		int _contadorAcceso;
 		bool _favorito;
-		//redesSociales
+		RedSocial* _redesSociales;
+		int _numRedes;
 
 
 	public:
@@ -59,6 +61,8 @@ using namespace std;
 			_anotaciones="NULL";
 			_contadorAcceso=0;
 			_favorito=false;
+			_redesSociales=NULL;
+			_numRedes=0;
 		}
 
 		/*inline Contacto(string nombre="NULL",string dni="NULL", string apellidos="NULL",int tel1=0, int tel2=0, string co1="NULL", string co2="NULL", string nota="NULL"){
@@ -167,6 +171,22 @@ using namespace std;
 		}
 
 		Contacto operator =(const Contacto &p);
+		void insertarRedSocial(const RedSocial& red);
+
+		inline int getNumRedes() const {
+			return _numRedes;
+		}
+
+		inline void setNumRedes(const int numRedes){
+			_numRedes=numRedes;
+		}
+
+		inline RedSocial& getRedSocial(const int i) const{
+			return _redesSociales[i];
+		}
+
+		void setRedesSociales(const Contacto &p);
+
 	};
 }
 

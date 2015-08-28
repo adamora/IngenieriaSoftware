@@ -23,8 +23,47 @@ namespace Dentista{
 		setAnotaciones(p.getAnotaciones());
 		setContadorAcceso(p.getContadorAcceso());
 		setFavorito(p.getFavorito());
-		//setRedesSociales
+		setRedesSociales(p);
 
 		return *this;
 	}
+
+	void Contacto::insertarRedSocial(const RedSocial& red)
+	{
+		int i;
+		int	num=this->getNumRedes();
+		num++;
+		this->setNumRedes(num);
+
+
+		RedSocial* redes=new RedSocial[num];
+
+		for(i=0;i<num;i++)
+		{
+			if(i==num-1){
+				redes[i]=red;
+			}else{
+				redes[i]=_redesSociales[i];
+			}
+		}
+
+
+		delete[] _redesSociales;
+		_redesSociales=new RedSocial[_numRedes];
+
+		for(i=0;i<_numRedes;i++){
+			_redesSociales[i]=redes[i];
+		}
+		delete[] redes;
+	}
+
+	void Contacto::setRedesSociales(const Contacto &p)
+	{
+		for(int i=0;i<p.getNumRedes();i++)
+		{
+			this->insertarRedSocial(p.getRedSocial(i));
+		}
+	}
 }
+
+

@@ -1,0 +1,17 @@
+/*
+ * RedSocial.h
+ *
+ *  Created on: 27 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef REDSOCIAL_H_
+#define REDSOCIAL_H_
+
+class RedSocial {
+public:
+	RedSocial();
+	virtual ~RedSocial();
+};
+
+#endif /* REDSOCIAL_H_ */

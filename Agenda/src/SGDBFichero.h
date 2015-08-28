@@ -65,6 +65,17 @@ class SGDBFichero:public SGDB{
 				/*personaAux = agenda[i];
 				fich.write((char *) (&personaAux), sizeof(Contacto));*/
 				fich << agenda[i].getNombre() << endl << agenda[i].getApellidos() << endl << agenda[i].getDNI() << endl << agenda[i].getTel1() << endl << agenda[i].getTel2() << endl << agenda[i].getCorreo1() << endl << agenda[i].getCorreo2() << endl << agenda[i].getFavorito() << endl << agenda[i].getAnotaciones() << endl << agenda[i].getContadorAcceso() << endl;
+				for(int j=0;j<agenda[i].getNumRedes();j++)
+				{
+					if(j!=agenda[i].getNumRedes()-1)
+					{
+						fich << agenda[i].getRedSocial(j).getNombreRed() << "," << agenda[i].getRedSocial(j).getUsuario() << ";";
+					}
+					else
+					{
+						fich << agenda[i].getRedSocial(j).getNombreRed() << "," << agenda[i].getRedSocial(j).getUsuario() << endl;
+					}
+				}
 
 			}
 			fich << endl;
@@ -92,6 +103,7 @@ class SGDBFichero:public SGDB{
 			string nombre,apellidos,DNI,Correo1,Correo2,Anotaciones;
 			string Tel1, Tel2,ContadorAcceso;
 			string Favorito;
+			string redes;
 
 
 			while(!fich.eof())
@@ -105,8 +117,9 @@ class SGDBFichero:public SGDB{
 				getline(fich, Correo1);
 				getline(fich, Correo2);
 				getline(fich, Favorito);
-				getline(fich,Anotaciones);
+				getline(fich, Anotaciones);
 				getline(fich, ContadorAcceso);
+				getline(fich, redes);
 
 
 
@@ -121,12 +134,44 @@ class SGDBFichero:public SGDB{
 				aux.setAnotaciones(Anotaciones);
 				aux.setContadorAcceso(atoi(ContadorAcceso.c_str()));
 
+				//Cargar Redes Sociales
+				string delimiter = ",";
+				string delimiterF = ";";
+
+				size_t pos=0;
+				string token;
+				string token2;
+				RedSocial red;
+
+				while((pos = redes.find(delimiterF)) != string::npos)
+				{
+				    token = redes.substr(0, pos);
+				    redes.erase(0, pos + delimiterF.length());
+					while((pos = token.find(delimiter)) != string::npos)
+					{
+						cout << "ENTRA\n";
+						token2 = token.substr(0, pos);
+						red.setNombreRed(token2);
+						token.erase(0, pos + delimiter.length());
+					}
+					red.setUsuario(token);
+					aux.insertarRedSocial(red);
+				}
+				while((pos = redes.find(delimiter)) != string::npos)
+				{
+					token = redes.substr(0, pos);
+					red.setNombreRed(token);
+					redes.erase(0, pos + delimiter.length());
+				}
+				red.setUsuario(redes);
+				aux.insertarRedSocial(red);
+				//FIN Redes Sociales
+
 				agAux.insertarPaciente(aux);
 				//fich.read((char*) (&aux), sizeof(Contacto));
 				contador++;
 			}
 
-			//cout << "EL NOMBRE ES: " << aux.getNombre();
 			fich.close();
 
 			agAux.setNumPacientes(contador-1);
