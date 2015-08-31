@@ -1,0 +1,301 @@
+/*
+ * SGDBFichero.h
+ *
+ *  Created on: 21 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef SGDBFICHERO_H_
+#define SGDBFICHERO_H_
+
+#include <string>
+#include <list>
+#include <fstream>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+
+
+#include "SGDB.h"
+
+
+using namespace std;
+
+namespace Dentista{
+
+class SGDBFichero:public SGDB{
+
+	private:
+
+		string _fichero;
+
+	public:
+		SGDBFichero() throw() {}
+
+		SGDBFichero(string fichero) throw ()
+		{
+			_fichero=fichero;
+		}
+
+		virtual ~SGDBFichero(){};
+
+		void setFichero(string f)
+		{
+			_fichero = f;
+		}
+
+		inline string getFichero() const
+		{
+			return _fichero;
+		}
+
+		inline void guardar(Agenda& agenda){
+			int i;
+			string fichAux="FichAux.tmp";
+			ofstream fich(fichAux.c_str(),ios::out);
+
+			//fich.open(fichAux.c_str(),ios::out);
+
+			//Contacto* agenda = agenda.getPacientes();
+
+			//Contacto personaAux;
+
+			for(i=0;i<agenda.getNumPacientes();i++)
+			{
+				/*personaAux = agenda[i];
+				fich.write((char *) (&personaAux), sizeof(Contacto));*/
+				fich << agenda[i].getNombre() << endl << agenda[i].getApellidos() << endl << agenda[i].getDNI() << endl << agenda[i].getTel1() << endl << agenda[i].getTel2() << endl << agenda[i].getCorreo1() << endl << agenda[i].getCorreo2() << endl;
+				for(int j=0;j<agenda[i].getNumDirecciones();j++)
+				{
+					if(j!=agenda[i].getNumDirecciones()-1)
+					{
+						fich << agenda[i].getDireccion(j).getCalle() << "," << agenda[i].getDireccion(j).getNumero() << "," << agenda[i].getDireccion(j).getEscalera() << "," << agenda[i].getDireccion(j).getPiso() << ","<< agenda[i].getDireccion(j).getPuerta() << "," << agenda[i].getDireccion(j).getCP() << "," << agenda[i].getDireccion(j).getLocalidad() << ";";
+					}
+					else
+					{
+						fich << agenda[i].getDireccion(j).getCalle() << "," << agenda[i].getDireccion(j).getNumero() << "," << agenda[i].getDireccion(j).getEscalera() << "," << agenda[i].getDireccion(j).getPiso() << ","<< agenda[i].getDireccion(j).getPuerta() << "," << agenda[i].getDireccion(j).getCP() << "," << agenda[i].getDireccion(j).getLocalidad() << endl;
+					}
+				}
+				fich << agenda[i].getFavorito() << endl << agenda[i].getAnotaciones() << endl << agenda[i].getContadorAcceso() << endl;
+				for(int j=0;j<agenda[i].getNumRedes();j++)
+				{
+					if(j!=agenda[i].getNumRedes()-1)
+					{
+						fich << agenda[i].getRedSocial(j).getNombreRed() << "," << agenda[i].getRedSocial(j).getUsuario() << ";";
+					}
+					else
+					{
+						fich << agenda[i].getRedSocial(j).getNombreRed() << "," << agenda[i].getRedSocial(j).getUsuario() << endl;
+					}
+				}
+
+			}
+			fich << endl;
+			/*for(i=0;i<agenda.getNumPacientes();i++)
+			{
+				fich << agenda[i].getNombre() << agenda[i].getApellidos() << agenda[i].getDNI() << agenda[i].getTel1() << agenda[i].getTel2() << agenda[i].getCorreo1() << agenda[i].getCorreo2() << agenda[i].getFavoragendao() << agenda[i].getAnotaciones() << agenda[i].getContadorAcceso();
+			}*/
+
+			fich.close();
+
+			remove(_fichero.c_str());
+			rename(fichAux.c_str(), _fichero.c_str());
+		}
+
+		inline void cargar(Agenda &agAux){
+			Contacto aux;
+			Contacto vacio;
+			int contador = 0;
+			//Agenda agAux;
+
+			ifstream fich(this->getFichero().c_str(), ios::in);
+
+			//fich.read((char *) (&aux), sizeof(Contacto));
+
+
+			string nombre,apellidos,DNI,Correo1,Correo2,Anotaciones;
+			string Tel1, Tel2,ContadorAcceso;
+			string Favorito;
+
+			string direcciones;
+			string redes;
+
+			string delimiter = ",";
+			string delimiterF = ";";
+
+			size_t pos=0;
+			string token;
+			string token2;
+
+			Direccion direccion;
+			RedSocial red;
+
+			while(!fich.eof())
+			{
+				//fich >> nombre >> apellidos >> DNI >> Tel1 >> Tel2 >> Correo1 >> Correo2 >> Favorito >> Anotaciones >> ContadorAcceso ;
+				getline(fich, nombre);
+				getline(fich, apellidos);
+				getline(fich, DNI);
+				getline(fich, Tel1);
+				getline(fich, Tel2);
+				getline(fich, Correo1);
+				getline(fich, Correo2);
+				getline(fich, direcciones);
+				getline(fich, Favorito);
+				getline(fich, Anotaciones);
+				getline(fich, ContadorAcceso);
+				getline(fich, redes);
+				cout << "AQUI ENTRA 5\n";
+				aux=vacio;
+				cout << "AQUI ENTRA 6\n";
+				aux.setNombre(nombre);
+				aux.setApellidos(apellidos);
+				aux.setDNI(DNI);
+				aux.setTel1(atoi(Tel1.c_str()));
+				aux.setTel2(atoi(Tel2.c_str()));
+				aux.setCorreo1(Correo1);
+				aux.setCorreo2(Correo2);
+
+				cout << "AQUI ENTRA 7\n"<< direcciones.find(delimiterF);
+
+
+				cout << "AQUI ENTRA 8\n";
+				while((pos = direcciones.find(delimiterF)) != string::npos)
+				{
+					cout << "AQUI ENTRA 9\n";
+					token = direcciones.substr(0, pos);
+					direcciones.erase(0, pos + delimiterF.length());
+					cout << "AQUI ENTRA 10\n";
+					while((pos = token.find(delimiter)) != string::npos)
+					{
+						cout << "AQUI ENTRA 12\n";
+						token2 = token.substr(0, pos);
+						direccion.setCalle(token2);
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setNumero(atoi(token2.c_str()));
+						token.erase(0, pos + delimiter.length());
+						cout << "AQUI ENTRA 13\n";
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setEscalera(token2);
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setPiso(atoi(token2.c_str()));
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setPuerta(token2.c_str()[0]);
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setCP(atoi(token2.c_str()));
+						token.erase(0, pos + delimiter.length());
+						//SI REPITO LAS TRES FILAS ANTERIORES CON CADA ATRIBUTO DE LA DIRECCION, ES POSIBLE QUE FUNCIONE
+					}
+					cout << "AQUI ENTRA 14\n";
+					direccion.setLocalidad(token);
+					cout << "AQUI ENTRA 15\n";
+					cout << "AQUI ENTRA 17\n";
+					aux.insertarDireccion(direccion);
+					cout << "AQUI ENTRA 20\n";
+				}
+				while((pos = direcciones.find(delimiter)) != string::npos)
+				{
+					token = direcciones.substr(0, pos);
+					direccion.setCalle(token);
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setNumero(atoi(token.c_str()));
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setEscalera(token);
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setPiso(atoi(token.c_str()));
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setPuerta(token.c_str()[0]);
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setCP(atoi(token.c_str()));
+					direcciones.erase(0, pos + delimiter.length());
+				}
+				direccion.setLocalidad(direcciones);
+				aux.insertarDireccion(direccion);
+
+				cout << "AQUI ENTRA\n";
+
+				//Fin Cargar Direcciones
+
+
+				aux.setFavorito(atoi(Favorito.c_str()));
+				aux.setAnotaciones(Anotaciones);
+				aux.setContadorAcceso(atoi(ContadorAcceso.c_str()));
+
+				//Cargar Redes Sociales
+
+
+				while((pos = redes.find(delimiterF)) != string::npos)
+				{
+				    token = redes.substr(0, pos);
+				    redes.erase(0, pos + delimiterF.length());
+					while((pos = token.find(delimiter)) != string::npos)
+					{
+						token2 = token.substr(0, pos);
+						red.setNombreRed(token2);
+						token.erase(0, pos + delimiter.length());
+					}
+					red.setUsuario(token);
+					aux.insertarRedSocial(red);
+				}
+				while((pos = redes.find(delimiter)) != string::npos)
+				{
+					token = redes.substr(0, pos);
+					red.setNombreRed(token);
+					redes.erase(0, pos + delimiter.length());
+				}
+				red.setUsuario(redes);
+				aux.insertarRedSocial(red);
+				//FIN Redes Sociales
+				cout << "AQUI ENTRA 2\n";
+
+				agAux.insertarPaciente(aux);
+
+				cout << "AQUI ENTRA 3\n";
+
+				//fich.read((char*) (&aux), sizeof(Contacto));
+				contador++;
+				cout << "AQUI ENTRA 4\n";
+			}
+
+			fich.close();
+
+
+			agAux.setNumPacientes(contador-1);
+
+			//return agAux;
+		}
+
+};
+
+}
+
+
+#endif /* SGDBFICHERO_H_ */

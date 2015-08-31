@@ -30,12 +30,7 @@ public:
 		_numPacientes=0;
 	}
 
-	/*inline ~Agenda(){
-		if(_pacientes!=NULL){
-			delete[]_pacientes;
-		}
-		_numPacientes=0;
-	}*/
+	inline virtual ~Agenda(){};
 
 	inline int getNumPacientes() const{
 		return _numPacientes;

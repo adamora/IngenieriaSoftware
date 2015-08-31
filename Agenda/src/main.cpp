@@ -201,7 +201,8 @@ int main(void)
 
 				SGDBFichero nuevo(nomFich);
 
-				Agenda aux=nuevo.cargar();
+				Agenda aux=agenda;
+				nuevo.cargar(aux);
 
 				cout << "El contenido del fichero es el siguiente:\n";
 				visualizarAgenda(aux);
@@ -220,6 +221,7 @@ int main(void)
 				}
 				else
 				{
+					aux.borrarAgenda();
 					cout << "Operación cancelada\n";
 				}
 

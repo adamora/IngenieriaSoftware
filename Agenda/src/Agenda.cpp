@@ -25,10 +25,11 @@ namespace Dentista{
 		if(_pacientes!=NULL)
 			delete[] _pacientes;
 
-		_numPacientes=agenda._numPacientes;
-		_pacientes=new Contacto[_numPacientes];
+		//_numPacientes=agenda._numPacientes;
+		setNumPacientes(agenda.getNumPacientes());
+		_pacientes=new Contacto[getNumPacientes()];
 
-		for(i=0;i<_numPacientes;i++){
+		for(i=0;i<getNumPacientes();i++){
 			_pacientes[i]=agenda._pacientes[i];
 		}
 		return *this;
@@ -127,8 +128,8 @@ namespace Dentista{
 				}
 			}
 
-			int num=this->getNumPacientes()-1;
-			this->setNumPacientes(num);
+			int num=(getNumPacientes()-1);
+			setNumPacientes(num);
 
 			delete[] _pacientes;
 			_pacientes=new Contacto[_numPacientes];
@@ -225,6 +226,3 @@ namespace Dentista{
 	}
 
 }
-
-
-

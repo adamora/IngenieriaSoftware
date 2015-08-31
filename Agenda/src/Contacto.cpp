@@ -19,11 +19,13 @@ namespace Dentista{
 		setTel2(p.getTel2());
 		setCorreo1(p.getCorreo1());
 		setCorreo2(p.getCorreo2());
-		//setDirecciones
+		setDirecciones(p);
+		setNumDirecciones(p.getNumDirecciones());
 		setAnotaciones(p.getAnotaciones());
 		setContadorAcceso(p.getContadorAcceso());
 		setFavorito(p.getFavorito());
 		setRedesSociales(p);
+		setNumRedes(p.getNumRedes());
 
 		return *this;
 	}
@@ -47,8 +49,8 @@ namespace Dentista{
 			}
 		}
 
-
-		delete[] _redesSociales;
+		if(_redesSociales!=NULL)
+			delete[] _redesSociales;
 		_redesSociales=new RedSocial[_numRedes];
 
 		for(i=0;i<_numRedes;i++){
@@ -59,9 +61,68 @@ namespace Dentista{
 
 	void Contacto::setRedesSociales(const Contacto &p)
 	{
-		for(int i=0;i<p.getNumRedes();i++)
+		delete[] _redesSociales;
+		_redesSociales=new RedSocial[p.getNumRedes()];
+
+		if(p._redesSociales == NULL)
 		{
-			this->insertarRedSocial(p.getRedSocial(i));
+			_redesSociales = NULL;
+		}
+		else
+		{
+			for(int i=0;i<p.getNumRedes();i++)
+			{
+				this->insertarRedSocial(p.getRedSocial(i));
+			}
+		}
+	}
+
+	void Contacto::insertarDireccion(const Direccion& direc)
+	{
+		int i;
+		int	num=this->getNumDirecciones();
+		num++;
+		this->setNumDirecciones(num);
+
+		Direccion* direcciones=new Direccion[num];
+
+		for(i=0;i<num;i++)
+		{
+			if(i==num-1){
+
+				direcciones[i]=direc;
+			}else{
+				direcciones[i]=_direcciones[i];
+			}
+		}
+
+		if(_direcciones!=NULL)
+			delete[] _direcciones;
+
+		_direcciones=new Direccion[num];
+
+		for(i=0;i<num;i++){
+			_direcciones[i]=direcciones[i];
+		}
+		delete[] direcciones;
+	}
+
+	void Contacto::setDirecciones(const Contacto &p)
+	{
+
+		delete []_direcciones;
+		_direcciones=new Direccion[p.getNumDirecciones()];
+
+		if(p._direcciones == NULL)
+		{
+			_direcciones = NULL;
+		}
+		else
+		{
+			for(int i=0;i<p.getNumDirecciones();i++)
+			{
+				this->insertarDireccion(p.getDireccion(i));
+			}
 		}
 	}
 }

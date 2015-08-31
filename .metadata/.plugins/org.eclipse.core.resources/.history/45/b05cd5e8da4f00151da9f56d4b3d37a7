@@ -1,0 +1,112 @@
+//============================================================================
+// Name        : Contacto.cpp
+// Author      : Adam
+// Version     :
+// Copyright   :
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include "Contacto.h"
+
+namespace Dentista{
+
+	Contacto Contacto::operator = (const Contacto &p)
+	{
+		setNombre(p.getNombre());
+		setDNI(p.getDNI());
+		setApellidos(p.getApellidos());
+		setTel1(p.getTel1());
+		setTel2(p.getTel2());
+		setCorreo1(p.getCorreo1());
+		setCorreo2(p.getCorreo2());
+		setDirecciones(p);
+		setAnotaciones(p.getAnotaciones());
+		setContadorAcceso(p.getContadorAcceso());
+		setFavorito(p.getFavorito());
+		setRedesSociales(p);
+
+		return *this;
+	}
+
+	void Contacto::insertarRedSocial(const RedSocial& red)
+	{
+		int i;
+		int	num=this->getNumRedes();
+		num++;
+		this->setNumRedes(num);
+
+
+		RedSocial* redes=new RedSocial[num];
+
+		for(i=0;i<num;i++)
+		{
+			if(i==num-1){
+				redes[i]=red;
+			}else{
+				redes[i]=_redesSociales[i];
+			}
+		}
+
+
+		delete[] _redesSociales;
+		_redesSociales=new RedSocial[_numRedes];
+
+		for(i=0;i<_numRedes;i++){
+			_redesSociales[i]=redes[i];
+		}
+		delete[] redes;
+	}
+
+	void Contacto::setRedesSociales(const Contacto &p)
+	{
+		delete[] _redesSociales;
+		_redesSociales=new Direccion[p.getNumRedes()];
+
+		for(int i=0;i<p.getNumRedes();i++)
+		{
+			this->insertarRedSocial(p.getRedSocial(i));
+		}
+	}
+
+	void Contacto::insertarDireccion(const Direccion& direc)
+	{
+		int i;
+		int	num=this->getNumDirecciones();
+		num++;
+		this->setNumDirecciones(num);
+
+
+		Direccion* direcciones=new Direccion[num];
+
+		for(i=0;i<num;i++)
+		{
+			if(i==num-1){
+				direcciones[i]=direc;
+			}else{
+				direcciones[i]=_direcciones[i];
+			}
+		}
+
+
+		delete[] _direcciones;
+		_direcciones=new Direccion[num];
+
+		for(i=0;i<num;i++){
+			_direcciones[i]=direcciones[i];
+		}
+		delete[] direcciones;
+	}
+
+	void Contacto::setDirecciones(const Contacto &p)
+	{
+		delete []_direcciones;
+		_direcciones=new Direccion[p.getNumDirecciones()];
+
+		for(int i=0;i<p.getNumDirecciones();i++)
+		{
+			this->insertarDireccion(p.getDireccion(i));
+		}
+	}
+}
+
+

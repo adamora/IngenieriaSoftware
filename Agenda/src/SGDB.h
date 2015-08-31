@@ -18,7 +18,7 @@ namespace Dentista{
 
 		virtual void guardar(Agenda& pacientes) = 0;
 
-		virtual Agenda& cargar() = 0;
+		virtual void cargar(Agenda& agAux) = 0;
 	};
 }
 

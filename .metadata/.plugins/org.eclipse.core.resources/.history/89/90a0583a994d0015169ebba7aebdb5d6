@@ -1,0 +1,21 @@
+/*
+ * Direccion.h
+ *
+ *  Created on: 28 de ago. de 2015
+ *      Author: adam
+ */
+
+#ifndef DIRECCION_H_
+#define DIRECCION_H_
+
+namespace Dentista {
+
+class Direccion {
+public:
+	Direccion();
+	virtual ~Direccion();
+};
+
+} /* namespace Dentista */
+
+#endif /* DIRECCION_H_ */

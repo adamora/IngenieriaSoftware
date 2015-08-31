@@ -24,7 +24,7 @@ namespace Dentista{
 				_nombreRed="NULL";
 				_usuario="NULL";
 			}
-			//virtual ~RedSocial();
+			inline virtual ~RedSocial(){};
 
 			inline void setNombreRed(const string nombreRed)
 			{

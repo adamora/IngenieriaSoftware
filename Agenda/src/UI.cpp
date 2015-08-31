@@ -59,13 +59,78 @@ namespace Dentista
 		cin >> co2;
 		c.setCorreo2(co2);
 
+		//DIRECCIONES
+		insertarDireccion(c);
+		//FIN DIRECCIONES
+
 		cout << "Inserte Nota: ";
 		cin.ignore();
 		getline(cin,nota);
 		c.setAnotaciones(nota);
 
+		//REDES
+		insertarRedes(c);
+		//FIN REDES
+
+		agenda.insertarPaciente(c);
+	}
+
+	void insertarDireccion(Contacto &c)
+	{
+		Direccion dir;
 		char respuesta;
-		int contador=0;
+
+		string localidad, calle, escalera;
+		int cp,numero,piso;
+		char puerta;
+
+		do{
+
+			cout << ">>>Insertando una Direccion<<<\n";
+
+			cout << "Introduzca la localidad: ";
+			cin.ignore();
+			getline(cin,localidad);
+			dir.setLocalidad(localidad);
+			cout << "Introduzca el codigo postal: ";
+			cin >> cp;
+			dir.setCP(cp);
+			cout << "Introduzca la calle: ";
+			cin.ignore();
+			getline(cin,calle);
+			dir.setCalle(calle);
+			cout << "Introduzca el numero: ";
+			cin >> numero;
+			dir.setNumero(numero);
+			cout << "Introduzca la Escalera: ";
+			cin.ignore();
+			getline(cin,escalera);
+			dir.setEscalera(escalera);
+			cout << "Introduzca el Piso: ";
+			cin >> piso;
+			dir.setPiso(piso);
+			cout << "Introduzca la Puerta: ";
+			cin >> puerta;
+			dir.setPuerta(puerta);
+
+			c.insertarDireccion(dir);
+
+
+			cout << "¿Desea insertar otra dirección? (S/N): ";
+			cin >> respuesta;
+
+			if(respuesta=='N')
+			{
+				cout << "Operación finalizada.\n";
+			}
+
+		}while(respuesta=='S');
+	}
+
+	void insertarRedes(Contacto &c)
+	{
+		char respuesta;
+		int contador = 0;
 		string redS;
 		string usuRed;
 		RedSocial red;
@@ -100,11 +165,9 @@ namespace Dentista
 			}
 
 		}while(respuesta=='S');
-
-		agenda.insertarPaciente(c);
 	}
 
-	void modificarContacto(Contacto &contacto){
+	void modificarContacto(Contacto &contacto){ //ME HE QUEDADO POR AQUÍ
 		int opcion;
 
 		string nombre;
@@ -117,7 +180,7 @@ namespace Dentista
 		string redSocial;
 		string usuRed;
 
-		cout << "¿Que datos desea modificar?\n1) Nombre\n2) Apellidos\n3) Telefono 1\n4) Telefono 2\n5) Correo 1\n6) Correo 2\n7) Anotaciones\n8) Red Social\nOpcion: ";
+		cout << "¿Que datos desea modificar?\n1) Nombre\n2) Apellidos\n3) Telefono 1\n4) Telefono 2\n5) Correo 1\n6) Correo 2\n7)Dirección\n8) Anotaciones\n9) Red Social\nOpción: ";
 		cin >> opcion;
 		switch(opcion)
 		{
@@ -152,11 +215,14 @@ namespace Dentista
 				contacto.setCorreo1(co2);
 				break;
 			case 7:
+				insertarDireccion(contacto);
+				break;
+			case 8:
 				cout << "Introduzca nuevas anotaciones: ";
 				cin >> nota;
 				contacto.setAnotaciones(nota);
 				break;
-			case 8:
+			case 9:
 			{
 				cout << "Introduzca el nombre de la red social: ";
 				cin >> redSocial;
@@ -179,24 +245,41 @@ namespace Dentista
 		int i;
 		int j;
 		cout << "Numero de pacientes: " << agenda.getNumPacientes() << "\n";
-		for(i=0;i<agenda.getNumPacientes();i++){
-			cout << i+1 << ") - Nombre y Apellidos: " << agenda[i].getNombre() << " " << agenda[i].getApellidos() << "; DNI: " << agenda[i].getDNI() << "; Telefono 1: " << agenda[i].getTel1() << "; Telefono 2: " << agenda[i].getTel2() << "; Correo 1: " << agenda[i].getCorreo1() << "; Correo 2: " << agenda[i].getCorreo2() << "; Notas: "<< agenda[i].getAnotaciones() << "; Redes Sociales:";
+		for(i=0;i<agenda.getNumPacientes();i++)
+		{
+			cout << "==============================================\n";
+			cout << "Nombre y Apellidos: " << agenda[i].getNombre() << " " << agenda[i].getApellidos() << "\n";
+			cout << "DNI: " << agenda[i].getDNI() << "\n";
+			cout << "Telefono 1: " << agenda[i].getTel1() << "\n";
+			cout << "Telefono 2: " << agenda[i].getTel2() << "\n";
+			cout << "Correo 1: " << agenda[i].getCorreo1() << "\n";
+			cout << "Correo 2: " << agenda[i].getCorreo2() << "\n";
+			cout << "Direccion/es:";
+			for(j=0;j<agenda[i].getNumDirecciones();j++)
+			{
+				cout << "\n ··· Localidad: " << agenda[i].getDireccion(j).getLocalidad() << "; Código Postal: "<< agenda[i].getDireccion(j).getCP() << "\n";
+				cout << "     Calle: " << agenda[i].getDireccion(j).getCalle() << "; Numero: " << agenda[i].getDireccion(j).getNumero() << "\n";
+				cout << "     Escalera: " << agenda[i].getDireccion(j).getEscalera() << "; Piso: " << agenda[i].getDireccion(j).getPiso() << "; Puerta: " << agenda[i].getDireccion(j).getPuerta() << "\n";
+			}
+			cout << "\n";
+			cout << "Notas: "<< agenda[i].getAnotaciones() << "\n";
+			cout << "Redes Sociales:";
 
 			if(agenda[i].getNumRedes()==0)
 			{
-				cout << "Ninguna\n";
+				cout << " Ninguna\n";
 			}
 			else
 			{
 				for(j=0;j<agenda[i].getNumRedes();j++)
 				{
-					cout << " ··· Red Social: " << agenda[i].getRedSocial(j).getNombreRed() << "; Usuario: "<< agenda[i].getRedSocial(j).getUsuario();
+					cout << "\n ··· Red Social: " << agenda[i].getRedSocial(j).getNombreRed() << "; Usuario: "<< agenda[i].getRedSocial(j).getUsuario();
 				}
 			}
 			cout << "\n";
+			cout << "==============================================\n";
 
 		}
-		Contacto c;
 	}
 
 	void visualizarContacto(Contacto &c)
@@ -207,12 +290,28 @@ namespace Dentista
 		cout << "Telefono 2: " << c.getTel2() << "\n";
 		cout << "Correo 1: " << c.getCorreo1() << "\n";
 		cout << "Correo 2: " << c.getCorreo2() << "\n";
-		cout << "Anotaciones: " << c.getAnotaciones() << "\n";
-		cout << "Redes Sociales:\n";
-		for(int i=0;i<c.getNumRedes();i++)
+		cout << "Direccion/es:";
+		for(int j=0;j<c.getNumDirecciones();j++)
 		{
-			cout << "  - Nombre Red: " << c.getRedSocial(i).getNombreRed() << "; Nombre usuario: " << c.getRedSocial(i).getUsuario() << "\n";
+			cout << "\n ··· Localidad: " << c.getDireccion(j).getLocalidad() << "; Código Postal: "<< c.getDireccion(j).getCP() << "\n";
+			cout << "     Calle: " << c.getDireccion(j).getCalle() << "; Numero: " << c.getDireccion(j).getNumero() << "/n";
+			cout << "     Escalera: " << c.getDireccion(j).getEscalera() << "; Piso:" << c.getDireccion(j).getPiso() << "; Puerta: " << c.getDireccion(j).getPuerta() << "\n";
 		}
+		cout << "Anotaciones: " << c.getAnotaciones() << "\n";
+		cout << "Redes Sociales:";
+
+		if(c.getNumRedes()==0)
+		{
+			cout << " Ninguna\n";
+		}
+		else
+		{
+			for(int j=0;j<c.getNumRedes();j++)
+			{
+				cout << "\n ··· Red Social: " << c.getRedSocial(j).getNombreRed() << "; Usuario: "<< c.getRedSocial(j).getUsuario();
+			}
+		}
+		cout << "\n";
 	}
 
 	void eliminarContacto(string dni, Agenda &agenda)

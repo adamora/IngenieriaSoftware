@@ -11,6 +11,7 @@
 //#include <string>
 #include <iostream>
 #include "RedSocial.h"
+#include "Direccion.h"
 
 namespace Dentista {
 using namespace std;
@@ -27,11 +28,15 @@ using namespace std;
 		string _correo1;
 		string _correo2;
 		//direcciones
+		Direccion* _direcciones;
+		int _numDirecciones;
+		//FinDirecciones
 		string _anotaciones;
 		int _contadorAcceso;
 		bool _favorito;
 		RedSocial* _redesSociales;
 		int _numRedes;
+
 
 
 	public:
@@ -58,6 +63,8 @@ using namespace std;
 			_telefono2=0;
 			_correo1="NULL";
 			_correo2="NULL";
+			_direcciones=NULL;
+			_numDirecciones=0;
 			_anotaciones="NULL";
 			_contadorAcceso=0;
 			_favorito=false;
@@ -90,6 +97,9 @@ using namespace std;
 			setContadorAcceso(c.getContadorAcceso());
 			setFavorito(c.getFavorito());
 		}
+
+		inline virtual ~Contacto(){};
+
 		inline string getNombre() const {
 			return _nombre;
 		}
@@ -187,6 +197,21 @@ using namespace std;
 
 		void setRedesSociales(const Contacto &p);
 
+		inline int getNumDirecciones() const {
+			return _numDirecciones;
+		}
+
+		inline void setNumDirecciones(const int numDirecciones){
+			_numDirecciones=numDirecciones;
+		}
+
+		void insertarDireccion(const Direccion& direc);
+
+		void setDirecciones(const Contacto &p);
+
+		inline Direccion& getDireccion(const int i) const {
+			return _direcciones[i];
+		}
 	};
 }
 

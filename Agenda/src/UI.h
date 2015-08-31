@@ -28,6 +28,8 @@ namespace Dentista
 	void visualizarContacto(Contacto &c);
 	void eliminarContacto(string dni, Agenda &agenda);
 	void agregarFavorito(Agenda& agenda, Contacto& c);
+	void insertarRedes(Contacto& c);
+	void insertarDireccion(Contacto& c);
 
 }
 

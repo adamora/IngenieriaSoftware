@@ -64,7 +64,19 @@ class SGDBFichero:public SGDB{
 			{
 				/*personaAux = agenda[i];
 				fich.write((char *) (&personaAux), sizeof(Contacto));*/
-				fich << agenda[i].getNombre() << endl << agenda[i].getApellidos() << endl << agenda[i].getDNI() << endl << agenda[i].getTel1() << endl << agenda[i].getTel2() << endl << agenda[i].getCorreo1() << endl << agenda[i].getCorreo2() << endl << agenda[i].getFavorito() << endl << agenda[i].getAnotaciones() << endl << agenda[i].getContadorAcceso() << endl;
+				fich << agenda[i].getNombre() << endl << agenda[i].getApellidos() << endl << agenda[i].getDNI() << endl << agenda[i].getTel1() << endl << agenda[i].getTel2() << endl << agenda[i].getCorreo1() << endl << agenda[i].getCorreo2() << endl;
+				for(int j=0;j<agenda[i].getNumDirecciones();j++)
+				{
+					if(j!=agenda[i].getNumDirecciones()-1)
+					{
+						fich << agenda[i].getDireccion(j).getCalle() << "," << agenda[i].getDireccion(j).getNumero() << "," << agenda[i].getDireccion(j).getEscalera() << "," << agenda[i].getDireccion(j).getPiso() << ","<< agenda[i].getDireccion(j).getPuerta() << "," << agenda[i].getDireccion(j).getCP() << "," << agenda[i].getDireccion(j).getLocalidad() << ";";
+					}
+					else
+					{
+						fich << agenda[i].getDireccion(j).getCalle() << "," << agenda[i].getDireccion(j).getNumero() << "," << agenda[i].getDireccion(j).getEscalera() << "," << agenda[i].getDireccion(j).getPiso() << ","<< agenda[i].getDireccion(j).getPuerta() << "," << agenda[i].getDireccion(j).getCP() << "," << agenda[i].getDireccion(j).getLocalidad() << endl;
+					}
+				}
+				fich << agenda[i].getFavorito() << endl << agenda[i].getAnotaciones() << endl << agenda[i].getContadorAcceso() << endl;
 				for(int j=0;j<agenda[i].getNumRedes();j++)
 				{
 					if(j!=agenda[i].getNumRedes()-1)
@@ -90,10 +102,11 @@ class SGDBFichero:public SGDB{
 			rename(fichAux.c_str(), _fichero.c_str());
 		}
 
-		inline Agenda& cargar(){
+		inline void cargar(Agenda &agAux){
 			Contacto aux;
+			Contacto vacio;
 			int contador = 0;
-			Agenda agAux;
+			//Agenda agAux;
 
 			ifstream fich(this->getFichero().c_str(), ios::in);
 
@@ -103,8 +116,19 @@ class SGDBFichero:public SGDB{
 			string nombre,apellidos,DNI,Correo1,Correo2,Anotaciones;
 			string Tel1, Tel2,ContadorAcceso;
 			string Favorito;
+
+			string direcciones;
 			string redes;
 
+			string delimiter = ",";
+			string delimiterF = ";";
+
+			size_t pos=0;
+			string token;
+			string token2;
+
+			Direccion direccion;
+			RedSocial red;
 
 			while(!fich.eof())
 			{
@@ -116,13 +140,13 @@ class SGDBFichero:public SGDB{
 				getline(fich, Tel2);
 				getline(fich, Correo1);
 				getline(fich, Correo2);
+				getline(fich, direcciones);
 				getline(fich, Favorito);
 				getline(fich, Anotaciones);
 				getline(fich, ContadorAcceso);
 				getline(fich, redes);
 
-
-
+				aux=vacio;
 				aux.setNombre(nombre);
 				aux.setApellidos(apellidos);
 				aux.setDNI(DNI);
@@ -130,18 +154,92 @@ class SGDBFichero:public SGDB{
 				aux.setTel2(atoi(Tel2.c_str()));
 				aux.setCorreo1(Correo1);
 				aux.setCorreo2(Correo2);
+
+				while((pos = direcciones.find(delimiterF)) != string::npos)
+				{
+					token = direcciones.substr(0, pos);
+					direcciones.erase(0, pos + delimiterF.length());
+
+					while((pos = token.find(delimiter)) != string::npos)
+					{
+
+						token2 = token.substr(0, pos);
+						direccion.setCalle(token2);
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setNumero(atoi(token2.c_str()));
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setEscalera(token2);
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setPiso(atoi(token2.c_str()));
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setPuerta(token2.c_str()[0]);
+						token.erase(0, pos + delimiter.length());
+
+						pos = token.find(delimiter);
+						token2 = token.substr(0, pos);
+						direccion.setCP(atoi(token2.c_str()));
+						token.erase(0, pos + delimiter.length());
+						//SI REPITO LAS TRES FILAS ANTERIORES CON CADA ATRIBUTO DE LA DIRECCION, ES POSIBLE QUE FUNCIONE
+					}
+
+					direccion.setLocalidad(token);
+					aux.insertarDireccion(direccion);
+				}
+				while((pos = direcciones.find(delimiter)) != string::npos)
+				{
+					token = direcciones.substr(0, pos);
+					direccion.setCalle(token);
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setNumero(atoi(token.c_str()));
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setEscalera(token);
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setPiso(atoi(token.c_str()));
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setPuerta(token.c_str()[0]);
+					direcciones.erase(0, pos + delimiter.length());
+
+					pos = direcciones.find(delimiter);
+					token = direcciones.substr(0, pos);
+					direccion.setCP(atoi(token.c_str()));
+					direcciones.erase(0, pos + delimiter.length());
+				}
+				direccion.setLocalidad(direcciones);
+				aux.insertarDireccion(direccion);
+
+				//Fin Cargar Direcciones
+
+
 				aux.setFavorito(atoi(Favorito.c_str()));
 				aux.setAnotaciones(Anotaciones);
 				aux.setContadorAcceso(atoi(ContadorAcceso.c_str()));
 
 				//Cargar Redes Sociales
-				string delimiter = ",";
-				string delimiterF = ";";
 
-				size_t pos=0;
-				string token;
-				string token2;
-				RedSocial red;
 
 				while((pos = redes.find(delimiterF)) != string::npos)
 				{
@@ -149,7 +247,6 @@ class SGDBFichero:public SGDB{
 				    redes.erase(0, pos + delimiterF.length());
 					while((pos = token.find(delimiter)) != string::npos)
 					{
-						cout << "ENTRA\n";
 						token2 = token.substr(0, pos);
 						red.setNombreRed(token2);
 						token.erase(0, pos + delimiter.length());
@@ -168,15 +265,17 @@ class SGDBFichero:public SGDB{
 				//FIN Redes Sociales
 
 				agAux.insertarPaciente(aux);
+
 				//fich.read((char*) (&aux), sizeof(Contacto));
 				contador++;
 			}
 
 			fich.close();
 
+
 			agAux.setNumPacientes(contador-1);
 
-			return agAux;
+			//return agAux;
 		}
 
 };
