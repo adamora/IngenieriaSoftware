@@ -43,11 +43,11 @@ namespace Dentista
 		cin >> dni;
 		c.setDNI(dni);
 
-		cout << "Inserte Telefono 1: ";
+		cout << "Inserte Telefono 1 (solo num.): ";
 		cin >> tel1;
 		c.setTel1(tel1);
 
-		cout << "Inserte Telefono 2: ";
+		cout << "Inserte Telefono 2 (solo num.): ";
 		cin >> tel2;
 		c.setTel2(tel2);
 
@@ -92,24 +92,24 @@ namespace Dentista
 			cin.ignore();
 			getline(cin,localidad);
 			dir.setLocalidad(localidad);
-			cout << "Introduzca el codigo postal: ";
+			cout << "Introduzca el codigo postal (solo num.): ";
 			cin >> cp;
 			dir.setCP(cp);
 			cout << "Introduzca la calle: ";
 			cin.ignore();
 			getline(cin,calle);
 			dir.setCalle(calle);
-			cout << "Introduzca el numero: ";
+			cout << "Introduzca el numero (solo num.): ";
 			cin >> numero;
 			dir.setNumero(numero);
 			cout << "Introduzca la Escalera: ";
 			cin.ignore();
 			getline(cin,escalera);
 			dir.setEscalera(escalera);
-			cout << "Introduzca el Piso: ";
+			cout << "Introduzca el Piso (solo num.): ";
 			cin >> piso;
 			dir.setPiso(piso);
-			cout << "Introduzca la Puerta: ";
+			cout << "Introduzca la Puerta (solo caracter): ";
 			cin >> puerta;
 			dir.setPuerta(puerta);
 
@@ -195,12 +195,12 @@ namespace Dentista
 				contacto.setApellidos(apellidos);
 				break;
 			case 3:
-				cout << "Introduzca el nuevo Telefono 1: ";
+				cout << "Introduzca el nuevo Telefono 1 (solo num.): ";
 				cin >> tel1;
 				contacto.setTel1(tel1);
 				break;
 			case 4:
-				cout << "Introduzca el nuevo Telefono 2: ";
+				cout << "Introduzca el nuevo Telefono 2 (solo num.): ";
 				cin >> tel2;
 				contacto.setTel1(tel2);
 				break;
@@ -294,7 +294,7 @@ namespace Dentista
 		for(int j=0;j<c.getNumDirecciones();j++)
 		{
 			cout << "\n ··· Localidad: " << c.getDireccion(j).getLocalidad() << "; Código Postal: "<< c.getDireccion(j).getCP() << "\n";
-			cout << "     Calle: " << c.getDireccion(j).getCalle() << "; Numero: " << c.getDireccion(j).getNumero() << "/n";
+			cout << "     Calle: " << c.getDireccion(j).getCalle() << "; Numero: " << c.getDireccion(j).getNumero() << "\n";
 			cout << "     Escalera: " << c.getDireccion(j).getEscalera() << "; Piso:" << c.getDireccion(j).getPiso() << "; Puerta: " << c.getDireccion(j).getPuerta() << "\n";
 		}
 		cout << "Anotaciones: " << c.getAnotaciones() << "\n";

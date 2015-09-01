@@ -212,6 +212,17 @@ using namespace std;
 		inline Direccion& getDireccion(const int i) const {
 			return _direcciones[i];
 		}
+
+		inline void deleteDirecciones(){
+			setNumDirecciones(0);
+			delete[] _direcciones;
+			_redesSociales=NULL;
+		}
+		inline void deleteRedes(){
+			setNumRedes(0);
+			delete[] _redesSociales;
+			_redesSociales=NULL;
+		}
 	};
 }
 

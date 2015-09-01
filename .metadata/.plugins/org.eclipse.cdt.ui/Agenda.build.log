@@ -1,15 +1,6 @@
-17:24:07 **** Incremental Build of configuration Debug for project Agenda ****
+14:39:33 **** Incremental Build of configuration Debug for project Agenda ****
 make all 
-Building file: ../src/Agenda.cpp
-Invoking: Cross G++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Agenda.d" -MT"src/Agenda.d" -o "src/Agenda.o" "../src/Agenda.cpp"
-Finished building: ../src/Agenda.cpp
- 
-Building target: Agenda
-Invoking: Cross G++ Linker
-g++  -o "Agenda"  ./src/Agenda.o ./src/Contacto.o ./src/Direccion.o ./src/RedSocial.o ./src/SGDB.o ./src/SGDBFichero.o ./src/UI.o ./src/main.o   -lpthread
-Finished building target: Agenda
- 
+make: No se hace nada para «all».
 
-17:24:08 Build Finished (took 619ms)
+14:39:33 Build Finished (took 73ms)
 

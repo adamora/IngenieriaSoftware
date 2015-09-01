@@ -90,6 +90,7 @@ class SGDBFichero:public SGDB{
 				}
 
 			}
+
 			fich << endl;
 			/*for(i=0;i<agenda.getNumPacientes();i++)
 			{

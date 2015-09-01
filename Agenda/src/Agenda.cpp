@@ -18,7 +18,7 @@ namespace Dentista{
 		return _pacientes[i];
 	}
 
-	Agenda& Agenda::operator = (Agenda &agenda)
+	Agenda& Agenda::operator = (Agenda &agenda)//PROBAR CON EL METODO INSERTAR PACIENTE
 	{
 		int i;
 
@@ -26,12 +26,16 @@ namespace Dentista{
 			delete[] _pacientes;
 
 		//_numPacientes=agenda._numPacientes;
+		/*
 		setNumPacientes(agenda.getNumPacientes());
-		_pacientes=new Contacto[getNumPacientes()];
+		_pacientes=new Contacto[getNumPacientes()];*/
 
-		for(i=0;i<getNumPacientes();i++){
-			_pacientes[i]=agenda._pacientes[i];
+		setNumPacientes(0);
+		for(i=0;i<agenda.getNumPacientes();i++){
+			//_pacientes[i]=agenda[i];
+			insertarPaciente(agenda[i]);
 		}
+
 		return *this;
 	}
 
@@ -219,7 +223,13 @@ namespace Dentista{
 	void Agenda::borrarAgenda()
 	{
 		if(_pacientes!=NULL){
-			delete[]_pacientes;
+			for(int i=0;i<getNumPacientes();i++)
+			{
+				_pacientes[i].deleteDirecciones();
+				_pacientes[i].deleteRedes();
+			}
+
+			delete[] _pacientes;
 		}
 		_pacientes=NULL;
 		_numPacientes=0;
